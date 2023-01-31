@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230130102007 extends AbstractMigration
+final class Version20230131084809 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,13 +20,6 @@ final class Version20230130102007 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE SEQUENCE availability_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE SEQUENCE game_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE SEQUENCE game_user_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE SEQUENCE "group_id_seq" INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE SEQUENCE group_game_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE SEQUENCE message_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE SEQUENCE user_group_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE TABLE availability (id INT NOT NULL, id_user_id INT DEFAULT NULL, game_id INT NOT NULL, start_date TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, end_date TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_3FB7A2BF79F37AE5 ON availability (id_user_id)');
         $this->addSql('CREATE INDEX IDX_3FB7A2BFE48FD905 ON availability (game_id)');
@@ -74,13 +67,6 @@ final class Version20230130102007 extends AbstractMigration
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SCHEMA public');
-        $this->addSql('DROP SEQUENCE availability_id_seq CASCADE');
-        $this->addSql('DROP SEQUENCE game_id_seq CASCADE');
-        $this->addSql('DROP SEQUENCE game_user_id_seq CASCADE');
-        $this->addSql('DROP SEQUENCE "group_id_seq" CASCADE');
-        $this->addSql('DROP SEQUENCE group_game_id_seq CASCADE');
-        $this->addSql('DROP SEQUENCE message_id_seq CASCADE');
-        $this->addSql('DROP SEQUENCE user_group_id_seq CASCADE');
         $this->addSql('ALTER TABLE availability DROP CONSTRAINT FK_3FB7A2BF79F37AE5');
         $this->addSql('ALTER TABLE availability DROP CONSTRAINT FK_3FB7A2BFE48FD905');
         $this->addSql('ALTER TABLE game_user DROP CONSTRAINT FK_6686BA6579F37AE5');

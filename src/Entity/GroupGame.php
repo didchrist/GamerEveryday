@@ -19,12 +19,12 @@ class GroupGame
     #[ORM\JoinColumn(nullable: false)]
     private ?group $id_group = null;
 
-    #[ORM\ManyToMany(targetEntity: game::class)]
-    private Collection $id_game;
+    #[ORM\ManyToMany(targetEntity: game::class, inversedBy: 'groupGames')]
+    private Collection $game_id;
 
     public function __construct()
     {
-        $this->id_game = new ArrayCollection();
+        $this->game_id = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -43,27 +43,27 @@ class GroupGame
 
         return $this;
     }
-
+    
     /**
      * @return Collection<int, game>
      */
-    public function getIdGame(): Collection
+    public function getGameId(): Collection
     {
-        return $this->id_game;
+        return $this->game_id;
     }
 
-    public function addIdGame(game $idGame): self
+    public function addGameId(game $gameId): self
     {
-        if (!$this->id_game->contains($idGame)) {
-            $this->id_game->add($idGame);
+        if (!$this->game_id->contains($gameId)) {
+            $this->game_id->add($gameId);
         }
 
         return $this;
     }
 
-    public function removeIdGame(game $idGame): self
+    public function removeGameId(game $gameId): self
     {
-        $this->id_game->removeElement($idGame);
+        $this->game_id->removeElement($gameId);
 
         return $this;
     }

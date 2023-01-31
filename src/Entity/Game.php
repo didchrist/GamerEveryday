@@ -30,9 +30,13 @@ class Game
     #[ORM\OneToMany(mappedBy: 'game', targetEntity: availability::class)]
     private Collection $id_availability;
 
+    #[ORM\ManyToMany(targetEntity: GroupGame::class, mappedBy: 'game_id')]
+    private Collection $groupGames;
+
     public function __construct()
     {
         $this->id_availability = new ArrayCollection();
+        $this->groupGames = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -113,6 +117,33 @@ class Game
             if ($idAvailability->getGame() === $this) {
                 $idAvailability->setGame(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, GroupGame>
+     */
+    public function getGroupGames(): Collection
+    {
+        return $this->groupGames;
+    }
+
+    public function addGroupGame(GroupGame $groupGame): self
+    {
+        if (!$this->groupGames->contains($groupGame)) {
+            $this->groupGames->add($groupGame);
+            $groupGame->addGameId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupGame(GroupGame $groupGame): self
+    {
+        if ($this->groupGames->removeElement($groupGame)) {
+            $groupGame->removeGameId($this);
         }
 
         return $this;
