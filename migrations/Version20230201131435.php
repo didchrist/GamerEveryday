@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230130102007 extends AbstractMigration
+final class Version20230201131435 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,30 +20,23 @@ final class Version20230130102007 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE SEQUENCE availability_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE SEQUENCE game_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE SEQUENCE game_user_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE SEQUENCE "group_id_seq" INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE SEQUENCE group_game_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE SEQUENCE message_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE SEQUENCE user_group_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE TABLE availability (id INT NOT NULL, id_user_id INT DEFAULT NULL, game_id INT NOT NULL, start_date TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, end_date TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE availability (id SERIAL NOT NULL, id_user_id INT DEFAULT NULL, game_id INT NOT NULL, start_date TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, end_date TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_3FB7A2BF79F37AE5 ON availability (id_user_id)');
         $this->addSql('CREATE INDEX IDX_3FB7A2BFE48FD905 ON availability (game_id)');
-        $this->addSql('CREATE TABLE game (id INT NOT NULL, game_num VARCHAR(20) NOT NULL, game_name VARCHAR(150) NOT NULL, number_of_player INT NOT NULL, category VARCHAR(150) NOT NULL, PRIMARY KEY(id))');
-        $this->addSql('CREATE TABLE game_user (id INT NOT NULL, id_user_id INT NOT NULL, id_game_id INT NOT NULL, show_game BOOLEAN NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE game (id SERIAL NOT NULL, game_num VARCHAR(20) NOT NULL, game_name VARCHAR(150) NOT NULL, number_of_player INT NOT NULL, category VARCHAR(150) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE game_user (id SERIAL NOT NULL, id_user_id INT NOT NULL, id_game_id INT NOT NULL, show_game BOOLEAN NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_6686BA6579F37AE5 ON game_user (id_user_id)');
         $this->addSql('CREATE INDEX IDX_6686BA653A127075 ON game_user (id_game_id)');
-        $this->addSql('CREATE TABLE "group" (id INT NOT NULL, group_num VARCHAR(20) NOT NULL, group_name VARCHAR(50) NOT NULL, PRIMARY KEY(id))');
-        $this->addSql('CREATE TABLE group_game (id INT NOT NULL, id_group_id INT NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE "group" (id SERIAL NOT NULL, group_num VARCHAR(20) NOT NULL, group_name VARCHAR(50) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE group_game (id SERIAL NOT NULL, id_group_id INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_A716AFCAE8F35D2 ON group_game (id_group_id)');
         $this->addSql('CREATE TABLE group_game_game (group_game_id INT NOT NULL, game_id INT NOT NULL, PRIMARY KEY(group_game_id, game_id))');
         $this->addSql('CREATE INDEX IDX_88D0141628F8D09 ON group_game_game (group_game_id)');
         $this->addSql('CREATE INDEX IDX_88D0141E48FD905 ON group_game_game (game_id)');
-        $this->addSql('CREATE TABLE message (id INT NOT NULL, id_user_id INT NOT NULL, content TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE message (id SERIAL NOT NULL, id_user_id INT NOT NULL, content TEXT DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_B6BD307F79F37AE5 ON message (id_user_id)');
-        $this->addSql('CREATE TABLE "user" (id SERIAL NOT NULL, username VARCHAR(50) NOT NULL, email VARCHAR(100) NOT NULL, password VARCHAR(150) NOT NULL, PRIMARY KEY(id))');
-        $this->addSql('CREATE TABLE user_group (id INT NOT NULL, id_group_id INT NOT NULL, id_user_id INT NOT NULL, role VARCHAR(50) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE "user" (id SERIAL NOT NULL, username VARCHAR(50) NOT NULL, email VARCHAR(100) NOT NULL, password VARCHAR(150) NOT NULL, is_verified BOOLEAN NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE user_group (id SERIAL NOT NULL, id_group_id INT NOT NULL, id_user_id INT NOT NULL, role VARCHAR(50) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_8F02BF9DAE8F35D2 ON user_group (id_group_id)');
         $this->addSql('CREATE INDEX IDX_8F02BF9D79F37AE5 ON user_group (id_user_id)');
         $this->addSql('CREATE TABLE messenger_messages (id BIGSERIAL NOT NULL, body TEXT NOT NULL, headers TEXT NOT NULL, queue_name VARCHAR(190) NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, available_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, delivered_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
@@ -74,13 +67,6 @@ final class Version20230130102007 extends AbstractMigration
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SCHEMA public');
-        $this->addSql('DROP SEQUENCE availability_id_seq CASCADE');
-        $this->addSql('DROP SEQUENCE game_id_seq CASCADE');
-        $this->addSql('DROP SEQUENCE game_user_id_seq CASCADE');
-        $this->addSql('DROP SEQUENCE "group_id_seq" CASCADE');
-        $this->addSql('DROP SEQUENCE group_game_id_seq CASCADE');
-        $this->addSql('DROP SEQUENCE message_id_seq CASCADE');
-        $this->addSql('DROP SEQUENCE user_group_id_seq CASCADE');
         $this->addSql('ALTER TABLE availability DROP CONSTRAINT FK_3FB7A2BF79F37AE5');
         $this->addSql('ALTER TABLE availability DROP CONSTRAINT FK_3FB7A2BFE48FD905');
         $this->addSql('ALTER TABLE game_user DROP CONSTRAINT FK_6686BA6579F37AE5');
