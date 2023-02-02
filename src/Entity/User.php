@@ -17,11 +17,11 @@ use Doctrine\Common\Collections\Collection;
     fields: ['email'],
     message: 'Adresse email deja utilisé'
 )]
-#[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
+#[UniqueEntity(fields: ['username'], message: "Quelqu'un d'autre possède deja ce username")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy:"IDENTITY")]
+    #[ORM\GeneratedValue(strategy: "IDENTITY")]
     #[ORM\Column]
     private ?int $id = null;
 
@@ -107,7 +107,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string) $this->username;
     }
 
     /**
