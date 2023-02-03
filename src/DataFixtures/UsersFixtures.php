@@ -1,18 +1,27 @@
 <?php
+
 namespace App\DataFixtures;
 
 
 use App\Entity\Availability;
 use App\Entity\Game;
+use App\Entity\GameUser;
 use App\Entity\Message;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
 class UsersFixtures extends Fixture
 {
+    private UserPasswordHasherInterface $userPasswordHasher;
+
+    public function __construct(UserPasswordHasherInterface $userPasswordHasher)
+    {
+        $this->userPasswordHasher = $userPasswordHasher;
+    }
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create('fr_FR');
@@ -23,7 +32,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Divinity: Original Sin 2')
             ->setNumberOfPlayer(4)
             ->setCategory('Jeu de roles');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -32,7 +41,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Minecraft')
             ->setNumberOfPlayer(100)
             ->setCategory('Jeu de survie');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -41,7 +50,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Total War : Warhammer 3')
             ->setNumberOfPlayer(100)
             ->setCategory('Jeu de roles');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -50,7 +59,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Csgo')
             ->setNumberOfPlayer(4)
             ->setCategory('Jeu de stratègie');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -59,7 +68,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Warhammer 40 000: Darktide')
             ->setNumberOfPlayer(4)
             ->setCategory('FPS');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -68,7 +77,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Chivalry 2')
             ->setNumberOfPlayer(100)
             ->setCategory('Jeu de combat médiéval');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -77,7 +86,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Escape From Tarkov')
             ->setNumberOfPlayer(5)
             ->setCategory('Hardcode FPS');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -86,7 +95,7 @@ class UsersFixtures extends Fixture
             ->setGameName('GTA 5')
             ->setNumberOfPlayer(100)
             ->setCategory("Jeu d'action-aventure");
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -95,7 +104,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Valheim')
             ->setNumberOfPlayer(100)
             ->setCategory('Jeu de survie');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -104,7 +113,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Valorant')
             ->setNumberOfPlayer(5)
             ->setCategory('FPS');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -113,7 +122,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Elden Ring')
             ->setNumberOfPlayer(3)
             ->setCategory('Jeu d\'aventure');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -122,7 +131,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Mario Kart 8')
             ->setNumberOfPlayer(4)
             ->setCategory('Jeu de course');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -131,7 +140,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Trackmania')
             ->setNumberOfPlayer(100)
             ->setCategory('Jeu de course');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -140,7 +149,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Factorio')
             ->setNumberOfPlayer(100)
             ->setCategory('Jeu de gestion');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -149,7 +158,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Satisfactory')
             ->setNumberOfPlayer(100)
             ->setCategory('Jeu de gestion');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -158,7 +167,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Among Us')
             ->setNumberOfPlayer(10)
             ->setCategory('Jeu de déduction');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -167,7 +176,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Borderlands 3')
             ->setNumberOfPlayer(4)
             ->setCategory('FPS');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -176,7 +185,7 @@ class UsersFixtures extends Fixture
             ->setGameName('GTFO')
             ->setNumberOfPlayer(4)
             ->setCategory('Hardcore FPS');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -185,7 +194,7 @@ class UsersFixtures extends Fixture
             ->setGameName('Orcs Must Die!3')
             ->setNumberOfPlayer(2)
             ->setCategory('Tower Defence, FPS');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
@@ -194,18 +203,21 @@ class UsersFixtures extends Fixture
             ->setGameName('Deep Rock Galactic')
             ->setNumberOfPlayer(4)
             ->setCategory('FPS');
-        $allgame [] = $game;
+        $allgame[] = $game;
         $manager->persist($game);
         $manager->flush();
 
-        for ($i = 1; $i<=100; $i++) {
+        for ($i = 1; $i <= 100; $i++) {
             $user = new User;
             $user->setUsername($faker->userName())
                 ->setEmail($faker->email())
-                ->setPassword($faker->password());
+                ->setPassword($this->userPasswordHasher->hashPassword($user, 'useradmin'))
+                ->setIsVerified(true);
             $manager->persist($user);
 
-            for ($m = 0; $m<=mt_rand(0,4); $m++) {
+
+
+            for ($m = 0; $m <= mt_rand(0, 4); $m++) {
                 $message = new Message;
 
                 $message->setContent($faker->sentence(10))
@@ -213,21 +225,27 @@ class UsersFixtures extends Fixture
 
                 $manager->persist($message);
             }
-            for ($j = 1; $j<=mt_rand(1,3); $j++) {
+            for ($j = 1; $j <= mt_rand(1, 3); $j++) {
                 $availability = new Availability;
                 $key = array_rand($allgame);
 
-                $dateStart = $faker->dateTimeBetween('now','+1 months');
+                $gameUser = new GameUser;
+
+                $gameUser->setShowGame(false)
+                    ->setIdUser($user)
+                    ->setIdGame($allgame[$key]);
+                $manager->persist($gameUser);
+
+                $dateStart = $faker->dateTimeBetween('now', '+1 months');
 
                 $availability->setStartDate($dateStart)
-                            ->setEndDate($faker -> dateTimeInInterval($dateStart,'+1 weeks'))
-                            ->setIdUser($user)
-                            ->setGame($allgame[$key]);
+                    ->setEndDate($faker->dateTimeInInterval($dateStart, '+1 weeks'))
+                    ->setIdUser($user)
+                    ->setGame($allgame[$key]);
                 $manager->persist($availability);
             }
         }
 
         $manager->flush();
-
     }
 }
