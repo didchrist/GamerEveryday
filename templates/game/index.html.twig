@@ -8,11 +8,11 @@
 		{% for game in games %}
 			<div>
 				<p>{{ game.gameName}}</p>
-
 			</div>
+		{% endfor %} 
+		{% for game in user.gameUsers %}
+			
+			<p>{{game.idGame.gameName}}</p>
 		{% endfor %}
-		{% for test in user.gameUsers %}
 
-			<p>{{ test}}</p>
-		{% endfor %}
 	{% endblock %}

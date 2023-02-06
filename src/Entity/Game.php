@@ -27,7 +27,7 @@ class Game
     #[ORM\Column(length: 150)]
     private ?string $category = null;
 
-    #[ORM\OneToMany(mappedBy: 'game', targetEntity: availability::class)]
+    #[ORM\OneToMany(mappedBy: 'game', targetEntity: Availability::class)]
     private Collection $id_availability;
 
     public function __construct()

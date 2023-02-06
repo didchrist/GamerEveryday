@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Game;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use PHPUnit\Framework\MockObject\Builder\Identity;
 
 /**
  * @extends ServiceEntityRepository<Game>
@@ -37,6 +38,18 @@ class GameRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+    public function findAllGameByUser($idUser) 
+    {
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('g.id', 'g.gameNum', 'g.gameName', 'g.numberOfPlayer', 'g.category','Identity(gu.id_user) AS idUser', 'u.username', 'u.email')
+            ->from('App\Entity\Game', 'g')
+            ->leftJoin('App\Entity\GameUser', 'gu', "WITH", "idUser = $idUser")
+            ->leftJoin('App\Entity\User', 'u')
+            ->orderBy('g.id', 'ASC');
+        $data = $query->getQuery()->getResult();
+
+        return $data;
     }
 
 //    /**
