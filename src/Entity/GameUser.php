@@ -18,11 +18,11 @@ class GameUser
 
     #[ORM\ManyToOne(inversedBy: 'gameUsers')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $id_user = null;
+    private ?User $id_user = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?game $id_game = null;
+    private ?Game $id_game = null;
 
     public function getId(): ?int
     {
@@ -41,24 +41,24 @@ class GameUser
         return $this;
     }
 
-    public function getIdUser(): ?user
+    public function getIdUser(): ?User
     {
         return $this->id_user;
     }
 
-    public function setIdUser(?user $id_user): self
+    public function setIdUser(?User $id_user): self
     {
         $this->id_user = $id_user;
 
         return $this;
     }
 
-    public function getIdGame(): ?game
+    public function getIdGame(): ?Game
     {
         return $this->id_game;
     }
 
-    public function setIdGame(?game $id_game): self
+    public function setIdGame(?Game $id_game): self
     {
         $this->id_game = $id_game;
 

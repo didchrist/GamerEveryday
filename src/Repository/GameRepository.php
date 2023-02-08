@@ -4,8 +4,9 @@ namespace App\Repository;
 
 use App\Entity\Game;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\ResultSetMapping;
 use Doctrine\Persistence\ManagerRegistry;
-use PHPUnit\Framework\MockObject\Builder\Identity;
+
 
 /**
  * @extends ServiceEntityRepository<Game>
@@ -41,15 +42,17 @@ class GameRepository extends ServiceEntityRepository
     }
     public function findAllGameByUser($idUser) 
     {
-        $query = $this->getEntityManager()->createQueryBuilder()
-            ->select('g.id', 'g.gameNum', 'g.gameName', 'g.numberOfPlayer', 'g.category','Identity(gu.id_user) AS idUser', 'u.username', 'u.email')
-            ->from('App\Entity\Game', 'g')
-            ->leftJoin('App\Entity\GameUser', 'gu', "WITH", "idUser = $idUser")
-            ->leftJoin('App\Entity\User', 'u')
-            ->orderBy('g.id', 'ASC');
-        $data = $query->getQuery()->getResult();
+        $conn = $this->getEntityManager()->getConnection();
 
-        return $data;
+        $query = 'SELECT g.*, gu.id_user_id, u.username, u.email, gu.show_game FROM public.game AS g 
+        LEFT JOIN game_user AS gu ON g.id = gu.id_game_id
+        AND id_user_id = :idUser
+        LEFT JOIN public.user AS u ON gu.id_user_id = u.id
+        ORDER BY g.id ASC';
+        $stmt = $conn->prepare($query);
+        $data = $stmt->executeQuery([$idUser]);
+
+        return $data->fetchAllAssociative();
     }
 
 //    /**
