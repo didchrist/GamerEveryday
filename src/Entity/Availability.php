@@ -22,7 +22,7 @@ class Availability
 
     #[ORM\ManyToOne(inversedBy: 'availabilities')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $id_user = null;
+    private ?User $id_user = null;
 
     #[ORM\ManyToOne(inversedBy: 'id_availability')]
     #[ORM\JoinColumn(nullable: false)]
@@ -57,12 +57,12 @@ class Availability
         return $this;
     }
 
-    public function getIdUser(): ?user
+    public function getIdUser(): ?User
     {
         return $this->id_user;
     }
 
-    public function setIdUser(?user $id_user): self
+    public function setIdUser(?User $id_user): self
     {
         $this->id_user = $id_user;
 
