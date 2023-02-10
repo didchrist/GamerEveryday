@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Game
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy:"IDENTITY")]
+    #[ORM\GeneratedValue(strategy: "IDENTITY")]
     #[ORM\Column]
     private ?int $id = null;
 
@@ -116,5 +116,9 @@ class Game
         }
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->getGameName();
     }
 }

@@ -10,34 +10,37 @@
 		{% for game in games %}
 			<h2>{{game.game_name}}</h2>
 			{% if game.number_of_player < 100 %}
-			<p>nombre de joueur max : {{game.number_of_player}}</p>
+				<p>nombre de joueur max :
+					{{game.number_of_player}}</p>
 			{% else %}
-			<p>nombre de joueur libre</p>
+				<p>nombre de joueur libre</p>
 			{% endif %}
-			<p>Type : {{game.category}}</p>
+			<p>Type :
+				{{game.category}}</p>
 			<form class="form-game" method="post">
 				<input type="hidden" name="gameId" value="{{game.id}}">
 				{% if game.username == null %}
-				<button class="ajout" type="submit">Je possède ce jeu</button>
+					<button class="ajout" type="submit">Je possède ce jeu</button>
 				{% else %}
-				<button class="suppression" type="submit">Je ne possède plus ce jeu</button>
+					<button class="suppression" type="submit">Je ne possède plus ce jeu</button>
 				{% endif %}
 				{% if game.username != null %}
-				<label class="switch">
-					{% if game.show_game == false %}
-					<input class="eventCheckbox" type="checkbox">
-					{% else %}
-					<input class="eventCheckbox" type="checkbox" checked>
-					{% endif %}
-					<span class="slider round"></span>
-				</label>
+					<label class="switch">
+						{% if game.show_game == false %}
+							<input class="eventCheckbox" type="checkbox">
+						{% else %}
+							<input class="eventCheckbox" type="checkbox" checked>
+						{% endif %}
+						<span class="slider round"></span>
+					</label>
+
 				{% endif %}
 			</form>
 		{% endfor %}
 		<script src="{{asset('assets/js/ajaxGameUser.js')}}"></script>
 		<script>
-			var urlAdd = "{{ path('app_add_gameUser')|escape('js')}}";
-			var urlDelete = "{{ path('app_delete_gameUser')|escape('js')}}";
-			var urlUpdate = "{{ path('app_modify_gameUser') }}";
+			var urlAdd = "{{ path('app_add_gameUser')|escape('js') }}";
+var urlDelete = "{{ path('app_delete_gameUser')|escape('js') }}";
+var urlUpdate = "{{ path('app_modify_gameUser') }}";
 		</script>
 	{% endblock %}
