@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Availability
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy:"IDENTITY")]
+    #[ORM\GeneratedValue(strategy: "IDENTITY")]
     #[ORM\Column]
     private ?int $id = null;
 
@@ -21,6 +21,7 @@ class Availability
     private ?\DateTimeInterface $endDate = null;
 
     #[ORM\ManyToOne(inversedBy: 'availabilities')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?user $id_user = null;
 
     #[ORM\ManyToOne(inversedBy: 'id_availability')]
