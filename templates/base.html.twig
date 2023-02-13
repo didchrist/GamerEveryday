@@ -17,7 +17,36 @@
         {% endblock %}
     </head>
     <body>
+    <div class="container-fluid">
+        <nav id="navbar" class="navbar navbar-expand-md bg-dark text-light fixed-top">
+            <a href="#nav" class="navbar-toggler" data-bs-toggle="collapse">
+                <i class="fa fa-bars fa-2x text-light"></i></a>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav px-4">
+                    <li class="nav-item"><a href="/" class="nav-link text-light ">Accueil</a></li>
+                    <li class="nav-item"><a href="/game" class="nav-link text-light ">Jeux</a></li>
+                    <li class="nav-item"><a href="/group" class="nav-link text-light ">Groupes</a></li>
+                    <li class="nav-item"><a href="/" class="nav-link text-light ">Calendrier</a></li>
+ 
+                    <li class="nav-item dropdown"><a href="" data-bs-auto-close="outside" class="nav-link text-light dropdown-toggle" data-bs-toggle="dropdown">Administration</a>
+                                    <ul class="dropdown-menu bg-dark">
+                                        <li class="dropdown-item"><a href="/users" class="nav-link text-light">Utilisateur</a></li>
+                                        <li class="dropdown-item"><a href="/games" class="nav-link text-light">Jeux</a></li>
+                                        <li class="dropdown-item"><a href="/groups" class="nav-link text-light">Groupes</a></li>
+                                    </ul>
+                </ul>
+            </div>
+            
+                <a href='/login' class='text-light' ><i class='fa fa-user-secret'></i> Se connecter</a>
+                <a href='/logout' class='text-light' ><i class='fa fa-user-ninja'></i> Deconnecter</a>
 
-        {% block body %}{% endblock %}
+
+        </nav>
+        <div  class="d-flex justify-content-around mt-5 pt-5">
+                {% block body %}{% endblock %}
+        </div>
+        <footer id="footer" class="bg-dark fixed-bottom p-2">
+        </footer>
+    </div>
     </body>
 </html>
