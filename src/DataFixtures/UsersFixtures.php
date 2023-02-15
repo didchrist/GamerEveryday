@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 
 use App\Entity\Availability;
+use App\Entity\AvailabilityGlobal;
 use App\Entity\Game;
 use App\Entity\GameUser;
 use App\Entity\Message;
@@ -225,7 +226,7 @@ class UsersFixtures extends Fixture
 
                 $manager->persist($message);
             }
-            for ($j = 1; $j <= mt_rand(1, 3); $j++) {
+            for ($j = 1; $j <= mt_rand(1, 10); $j++) {
                 $availability = new Availability;
                 $key = array_rand($allgame);
 
@@ -242,6 +243,16 @@ class UsersFixtures extends Fixture
                     ->setEndDate($faker->dateTimeInInterval($dateStart, '+1 weeks'))
                     ->setIdUser($user)
                     ->setGame($allgame[$key]);
+                $manager->persist($availability);
+            }
+            for ($o = 1; $o <= mt_rand(1, 5); $o++) {
+                $availability = new AvailabilityGlobal;
+
+                $dateStart = $faker->dateTimeBetween('now', '+1 months');
+
+                $availability->setStartDate($dateStart)
+                    ->setEndDate($faker->dateTimeInInterval($dateStart, '+1 weeks'))
+                    ->setUserId($user);
                 $manager->persist($availability);
             }
         }

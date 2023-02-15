@@ -6,16 +6,40 @@
 
 {% block body %}
 	<h2>Disponibilité Global</h2>
-	<div id="listAvailability"></div>
+	<div>
+		<p id="statusAjaxGlobal"></p>
+	</div>
+	<div id="listAvailabilityGlobal">
+		{% for availabilityGlobal in availabilitiesGlobal %}
+			<p>{{ availabilityGlobal.startDate | date("H:i d/m/Y", "Europe/Paris")}} => {{ availabilityGlobal.endDate | date("H:i d/m/Y", "Europe/Paris") }}</p>
+		{% endfor %}
+	</div>
 	<div id="start_date_time"></div>
 	<div id="end_date_time"></div>
+	<button id="ajaxSendGlobal">Valider</button>
 	{{ form_start(availabilityForm) }}
 	{{ form_row(availabilityForm.game)}}
+	<div>
+		<p id="statusAjax"></p>
+	</div>
+	<div id="listAvailability">
+		{% for availability in availabilities %}
+		<p>{{ availability.startDate | date("H:i d/m/Y", "Europe/Paris")}} => {{ availability.endDate | date("H:i d/m/Y", "Europe/Paris") }}</p>
+		{% endfor %}
+	</div>
 	<h2 id="confirmGame"></h2>
 	<div>
 		<img src="" alt="">
 	</div>
+	
 	<div id="start_date_time_2"></div>
 	<div id="end_date_time_2"></div>
+	<button id="ajaxSend">Valider</button>
 	{{ form_end(availabilityForm) }}
+	<script src="{{ asset('assets/js/ajaxAvailability.js')}}"></script>
+	<script>
+		var urlAddGlobalAvailability = "{{path('app_add_globalAvailability') | escape('js')}}";
+		var urlListGameAvailability = "{{ path('app_availability_listgame') | escape ('js')}}";
+		var urlAddAvailability = "{{path('app_add_availability') | escape('js')}}";
+	</script>
 {% endblock %}
