@@ -11,7 +11,12 @@
 	</div>
 	<div id="listAvailabilityGlobal">
 		{% for availabilityGlobal in availabilitiesGlobal %}
-			<p>{{ availabilityGlobal.startDate | date("H:i d/m/Y", "Europe/Paris")}} => {{ availabilityGlobal.endDate | date("H:i d/m/Y", "Europe/Paris") }}</p>
+			<div class="availability">
+				<p>{{ availabilityGlobal.startDate | date("H:i d/m/Y", "Europe/Paris")}}
+					=>
+					{{ availabilityGlobal.endDate | date("H:i d/m/Y", "Europe/Paris") }}</p>
+				<button class="ajaxDeleteAvailabilityGlobal">x</button>
+			</div>
 		{% endfor %}
 	</div>
 	<div id="start_date_time"></div>
@@ -24,22 +29,29 @@
 	</div>
 	<div id="listAvailability">
 		{% for availability in availabilities %}
-		<p>{{ availability.startDate | date("H:i d/m/Y", "Europe/Paris")}} => {{ availability.endDate | date("H:i d/m/Y", "Europe/Paris") }}</p>
+			<div class="availability">
+				<p>{{ availability.startDate | date("H:i d/m/Y", "Europe/Paris")}}
+					=>
+					{{ availability.endDate | date("H:i d/m/Y", "Europe/Paris") }}</p>
+				<button id="ajaxDeleteAvailability">x</button>
+			</div>
 		{% endfor %}
 	</div>
 	<h2 id="confirmGame"></h2>
 	<div>
 		<img src="" alt="">
 	</div>
-	
+
 	<div id="start_date_time_2"></div>
 	<div id="end_date_time_2"></div>
 	<button id="ajaxSend">Valider</button>
 	{{ form_end(availabilityForm) }}
 	<script src="{{ asset('assets/js/ajaxAvailability.js')}}"></script>
 	<script>
-		var urlAddGlobalAvailability = "{{path('app_add_globalAvailability') | escape('js')}}";
-		var urlListGameAvailability = "{{ path('app_availability_listgame') | escape ('js')}}";
-		var urlAddAvailability = "{{path('app_add_availability') | escape('js')}}";
+		var urlAddGlobalAvailability = "{{ path('app_add_globalAvailability') | escape('js') }}";
+var urlListGameAvailability = "{{ path('app_availability_listgame') | escape ('js') }}";
+var urlAddAvailability = "{{ path('app_add_availability') | escape('js') }}";
+var urlDeleteAvailabilityGlobal = "{{ path('app_delete_globalAvailability') | escape('js') }}";
+var urlDeleteAvailability = "{{ path('app_delete_availability') | escape('js') }}";
 	</script>
 {% endblock %}

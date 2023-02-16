@@ -1,21 +1,37 @@
-#listAvailability, #listAvailabilityGlobal {
-    background-color: rgba(80, 235, 95, 0.712);
-    width: 80%;
-    border: 1px solid black;
-    border-radius: 15px;
-    color: rgba(15, 29, 229, 0.805);
-    display: flex;
-    margin: 2%;
-    min-height: 100px;
-    flex-wrap: wrap;    
+#listAvailability,
+#listAvailabilityGlobal {
+  background-color: rgba(80, 235, 95, 0.712);
+  width: 80%;
+  border: 1px solid black;
+  border-radius: 15px;
+  color: rgba(15, 29, 229, 0.805);
+  display: flex;
+  margin: 2%;
+  min-height: 100px;
+  flex-wrap: wrap;
 }
-#listAvailability p, #listAvailabilityGlobal p {
-    border: solid 1px black;
-    background-color: rgb(76, 200, 26);
-    width: auto;
-    height: auto;
-    border-radius: 10px;
-    padding: 5px 10px;
-    margin: 5px 10px;
-    max-height:35px;
+#listAvailability .availability,
+#listAvailabilityGlobal .availability {
+  border: solid 1px black;
+  background-color: rgb(76, 200, 26);
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 5px 10px;
+  max-height: 35px;
+  display: flex;
+  vertical-align: middle;
+}
+#listAvailability .availability button,
+#listAvailabilityGlobal .availability button {
+  margin-top: -2px;
+  background-color: unset;
+  border: none;
+  color: rgba(255, 0, 0, 0.815);
+  transition: all 0.5s;
+}
+#listAvailability .availability button:hover,
+#listAvailabilityGlobal .availability button:hover {
+  color: rgba(146, 24, 24, 0.582);
 }
