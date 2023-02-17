@@ -207,8 +207,8 @@ ajaxDeleteGlobal.forEach((element) => {
     fetch(urlDeleteAvailabilityGlobal, { method: "post", headers: { "Content-Type": "application/json" }, body: dataJson })
       .then((response) => response.text())
       .then((text) => {
-        var reponse = document.getElementById("statusAjaxGlobal");
-        reponse.innerHTML = text;
+        var response = document.getElementById("statusAjaxGlobal");
+        response.innerHTML = text;
         removeElement.remove();
       })
       .catch(function (error) {
@@ -218,3 +218,26 @@ ajaxDeleteGlobal.forEach((element) => {
 });
 
 var ajaxDelete = document.querySelectorAll(".ajaxDeleteAvailability");
+ajaxDelete.forEach((element) => {
+  element.addEventListener("click", function (e) {
+    e.preventDefault();
+    var date = this.previousElementSibling.textContent;
+    var removeElement = this.parentElement;
+    date = date.split("\n\t\t\t\t\t=>\n\t\t\t\t\t");
+    var startDate = date[0];
+    var endDate = date[1];
+    var game = document.getElementById("availability_game").value;
+    var data = { startDate: startDate, endDate: endDate, game: game };
+    var dataJson = JSON.stringify(data);
+    fetch(urlDeleteAvailability, { method: "post", headers: { "Content-Type": "application/json" }, body: dataJson })
+      .then((response) => response.text())
+      .then((text) => {
+        var response = document.getElementById("statusAjax");
+        response.innerHTML = text;
+        removeElement.remove();
+      })
+      .catch(function (error) {
+        console.log("Erreur dans l'opération fetch :" + error.message);
+      });
+  });
+});

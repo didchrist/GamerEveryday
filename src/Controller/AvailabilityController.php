@@ -144,7 +144,7 @@ class AvailabilityController extends AbstractController
         $endDate = $date->createFromFormat('H:i d/m/Y', $data['endDate'], new \DateTimeZone('Europe/Paris'));
         $endDate->setTimezone(new \DateTimeZone('UTC'));
 
-        $availability = $availabilityRepository->findOneBy(['start_date' => $startDate, 'end_date' => $endDate, 'user_id' => $user->getId(), 'game' => $game]);
+        $availability = $availabilityRepository->findOneBy(['startDate' => $startDate, 'endDate' => $endDate, 'id_user' => $user->getId(), 'game' => $game]);
         $availabilityRepository->remove($availability, true);
 
         return new Response('suppression effectué');
