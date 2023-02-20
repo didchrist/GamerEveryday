@@ -18,41 +18,29 @@
         {% endblock %}
     </head>
     <body>
-    <div class="container-fluid">
-        <nav id="navbar" class="navbar navbar-expand-md bg-primary text-light fixed-top">
-            <a href="#nav" class="navbar-toggler" data-bs-toggle="collapse">
-                <i class="fa fa-bars fa-2x text-light"></i></a>
-            <div class="collapse navbar-collapse" id="nav">
-                <ul class="navbar-nav px-4">
-                    <li class="nav-item"><a href="/" class="nav-link text-light ">Accueil</a></li>
-                    <li class="nav-item"><a href="/game" class="nav-link text-light ">Jeux</a></li>
-                    <li class="nav-item"><a href="/group" class="nav-link text-light ">Groupes</a></li>
-                    <li class="nav-item"><a href="/" class="nav-link text-light ">Calendrier</a></li>
- 
-                    <li class="nav-item dropdown"><a href="" data-bs-auto-close="outside" class="nav-link text-light dropdown-toggle" data-bs-toggle="dropdown">Administration</a>
-                                    <ul class="dropdown-menu bg-dark">
-                                        <li class="dropdown-item"><a href="/users" class="nav-link text-light">Utilisateur</a></li>
-                                        <li class="dropdown-item"><a href="/games" class="nav-link text-light">Jeux</a></li>
-                                        <li class="dropdown-item"><a href="/groups" class="nav-link text-light">Groupes</a></li>
-                                    </ul>
-                    </li>        
-                </ul>
-            </div>
-            
-                {% if app.user == null %}
-                <a href='/login' class='text-light mx-2' ><i class='fa fa-user-secret'></i>Se connecter</a>
-                {% endif %}
-                {% if app.user %}
-                <a href='/logout' class='text-light mx-2' ><i class='fa fa-user-ninja'></i> {{ app.user.userIdentifier }} Deconnecter</a>
-                {% endif %}
+
+    
+                
 
 
-        </nav>
-        <div  class="d-flex justify-content-around mt-5 pt-5">
+        <div class="d-flex justify-content-around mt-5 pt-5">
                 {% block body %}{% endblock %}
         </div>
-        <footer id="footer" class="bg-light fixed-bottom p-2">
-        FOOTER
+        <footer id="footer" class="bg-light fixed-bottom p-2 d-flex justify-content-around">
+            <div>
+                <a class="discord btn-round" target="_blank" href="#"><i class="fa-brands fa-discord "></i></a>
+                <a class="instagram btn-round" target="_blank" href="#"><i class="fa-brands fa-instagram "></i></a>
+                <a class="twitter btn-round" target="_blank" href="#"><i class="fa-brands fa-twitter "></i></a>
+                <a class="tiktok btn-round" target="_blank" href="#"><i class="fa-brands fa-tiktok "></i></a>
+                <a class="facebook btn-round" target="_blank" href="#"><i class="fa-brands fa-facebook "></i></a>
+                <a class="youtube btn-round" target="_blank" href="#"><i class="fa-brands fa-youtube "></i></a>
+            </div>
+            <div> 
+                <a href="#">Mentions légales</a> | 
+                <a href="#">Conditions d’utilisations </a> | 
+                <a href="#">Politique de confidentialité </a> | 
+                <a href="#">Nous contacter</a>
+            </div>
         </footer>
     </div>
     <script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
