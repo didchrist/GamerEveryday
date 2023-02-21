@@ -44,6 +44,22 @@ body {
   color:var(--text-color-light);
 }
 
+/*@media (min-width: 1200px) {
+
+}   
+
+@media (max-width: 1199px) {
+
+    
+}
+@media (max-width: 991px) {
+
+}
+@media screen(max-width: 767px) {
+
+}
+*/
+
 p,
 h1,
 h2,
@@ -391,7 +407,7 @@ de couleur avec un border-radius grâce à un translateX */
   border: 2px solid var(--clr);
 }
 
-.text-neon-pink {
+/* .text-neon-pink {
   color: var(--text-color-light);
   text-shadow: 1px 1px 3px var(--second-light), 1px -1px 3px var(--second-light),
     -1px -1px 3px var(--second-light), -1px 1px 3px var(--second-light);
@@ -400,7 +416,7 @@ de couleur avec un border-radius grâce à un translateX */
   color: var(--text-color-light);
   text-shadow: 1px 1px 3px var(--primary), 1px -1px 3px var(--primary),
     -1px -1px 3px var(--primary), -1px 1px 3px var(--primary);
-}
+} */
 .btn-round
 {
     border-radius: 10%;
@@ -497,4 +513,5 @@ de couleur avec un border-radius grâce à un translateX */
 
 .blue_transparent{
     background-color: rgb(4, 187, 255,0.3);
+    border-radius: 5px;
 }

@@ -1,0 +1,10 @@
+.text-neon-pink {
+    color: var(--text-color-light);
+    text-shadow: 1px 1px 3px var(--second-light), 1px -1px 3px var(--second-light),
+      -1px -1px 3px var(--second-light), -1px 1px 3px var(--second-light);
+  }
+  .text-neon-blue {
+    color: var(--text-color-light);
+    text-shadow: 1px 1px 3px var(--primary), 1px -1px 3px var(--primary),
+      -1px -1px 3px var(--primary), -1px 1px 3px var(--primary);
+  }
