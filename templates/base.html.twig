@@ -5,6 +5,8 @@
         <title>GamerEveryday</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{asset('assets/fontawesome/css/all.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
         <link rel="stylesheet" href="{{ asset('assets/css/neon.css')}}">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
@@ -16,6 +18,110 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="navigation">
+            <ul>
+                <li class="list {{ (app.request.get('_route') == 'app_home') ? 'active' : '' }}">
+                    <a href="{{ path('app_home')}}">
+                        <span class="icon">
+                            <i class="fa-solid fa-home"></i>
+                        </span>
+    
+                        <span class="text">Accueil</span>
+                    </a>
+                </li>
+                <li class="list {{ (app.request.get('_route') == 'app_game') ? 'active' : '' }}">
+                    <a href="{{path('app_game')}}">
+                        <span class="icon">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </span>
+                        <span class="text">Jeux</span>
+                    </a>
+                </li>
+                <li class="list {{ (app.request.get('_route') == 'app_group') ? 'active' : '' }}">
+                    <a href="{{path('app_group')}}">
+                        <span class="icon">
+                            <i class="fa-solid fa-users"></i>
+                        </span>
+                        <span class="text">Groupe</span>
+                    </a>
+                </li>
+                <li class="list {{ (app.request.get('_route') == 'app_availability') ? 'active' : '' }}">
+                    <a href="{{path('app_availability')}}">
+                        <span class="icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </span>
+                        <span class="text">Disponibilité</span>
+                    </a>
+                </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                <li class="list {{ (app.request.get('_route') == 'app_admin') ? 'active' : '' }}">
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-gear"></i>
+                        </span>
+                        <span class="text">Admin</span>
+                    </a>
+                </li>
+                {% endif %}
+                {% if app.user == null %}
+                <li class="list {{ (app.request.get('_route') == 'app_login') ? 'active' : '' }}">                
+                    <a href="{{path('app_login')}}">
+                        <span class="icon">
+                            <i class="fa-solid fa-user-secret"></i>
+                        </span>
+                        <span class="text">Connexion</span>
+                    </a>
+                </li>
+                {% endif %}
+                {% if app.user %}
+                <li class="list">                
+                    <a href="{{path('app_logout')}}">
+                        <span class="icon">
+                            <i class="fa-solid fa-user-ninja"></i>
+                        </span>
+                        <span class="text">Deconnecter</span>
+                    </a>
+                </li>
+                {% endif %}
+                    {# <a href='/login' class='text-light mx-2' ><i class='fa-solid fa-user-secret'></i>Connexion</a> #}
+                    
+                    
+                    {# <a href='/logout' class='text-light mx-2' ><i class='fa-solid fa-user-ninja'></i> {{ app.user.userIdentifier }} Deconnecter</a> #}
+                        
+                <div class="indicator"></div>
+            </ul>
+        </div>
+
+        <div class="container-fluid d-flex justify-content-center">
+                {% block body %}{% endblock %}
+        </div>
+        <footer id="footer" class="bg-light fixed-bottom p-2 d-flex justify-content-between">
+            <div>
+                <a class="discord btn-round" target="_blank" href="#"><i class="fa-brands fa-discord "></i></a>
+                <a class="instagram btn-round" target="_blank" href="#"><i class="fa-brands fa-instagram "></i></a>
+                <a class="twitter btn-round" target="_blank" href="#"><i class="fa-brands fa-twitter "></i></a>
+                <a class="tiktok btn-round" target="_blank" href="#"><i class="fa-brands fa-tiktok "></i></a>
+                <a class="facebook btn-round" target="_blank" href="#"><i class="fa-brands fa-facebook "></i></a>
+                <a class="youtube btn-round" target="_blank" href="#"><i class="fa-brands fa-youtube "></i></a>
+            </div>
+            <div> 
+                <a href="#">Mentions légales</a> | 
+                <a href="#">Conditions d’utilisations </a> | 
+                <a href="#">Politique de confidentialité </a> | 
+                <a href="#">Nous contacter</a>
+            </div>
+        </footer>
+    </div>
+        <script>
+            const list = document.querySelectorAll('.list');
+            function activeLink(){
+                list.forEach((item) =>
+                item.classList.remove('active'));
+                this.classList.add('active');
+            }
+            list.forEach((item) =>
+            item.addEventListener('click', activeLink));
+        </script>
+    <script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
     </body>
 </html>
