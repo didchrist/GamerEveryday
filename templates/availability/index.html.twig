@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+<div class="d-flex flex-column">
 	<h2>Disponibilité Global</h2>
 	<div>
 		<p id="statusAjaxGlobal"></p>
@@ -46,6 +47,7 @@
 	<div id="end_date_time_2"></div>
 	<button id="ajaxSend">Valider</button>
 	{{ form_end(availabilityForm) }}
+</div>
 	<script src="{{ asset('assets/js/ajaxAvailability.js')}}"></script>
 	<script>
 		var urlAddGlobalAvailability = "{{ path('app_add_globalAvailability') | escape('js') }}";
