@@ -1,14 +1,36 @@
 .text-neon-pink {
     color: var(--text-color-light);
+    text-shadow: 1px 1px 3px var(--second), 1px -1px 3px var(--second),
+      -1px -1px 3px var(--second), -1px 1px 3px var(--second);
+  }
+
+.text-neon-pink a:hover,a:active{
+    color: var(--text-color-light);
     text-shadow: 1px 1px 3px var(--second-light), 1px -1px 3px var(--second-light),
       -1px -1px 3px var(--second-light), -1px 1px 3px var(--second-light);
   }
+
+.text-neon-pink a:visited{
+    color: var(--text-color-light);
+    text-shadow: 1px 1px 3px var(--second-dark), 1px -1px 3px var(--second-dark),
+      -1px -1px 3px var(--second-dark), -1px 1px 3px var(--second-dark);
+  }
+
   .text-neon-blue {
     color: var(--text-color-light);
     text-shadow: 1px 1px 3px var(--primary), 1px -1px 3px var(--primary),
       -1px -1px 3px var(--primary), -1px 1px 3px var(--primary);
   }
-  .text-contour{
-    text-shadow: 0px 0px 0px var(--text-color), 3px -3px 0px var(--text-color),
-      -3px -3px 0px var(--text-color), -3px 3px 0px var(--text-color);
+  
+  .text-neon-blue a:hover,a:active{
+    color: var(--text-color-light);
+    text-shadow: 1px 1px 3px var(--primary-light), 1px -1px 3px var(--primary-light),
+      -1px -1px 3px var(--primary-light), -1px 1px 3px var(--primary-light);
   }
+  
+  .text-neon-blue a:visited{
+    color: var(--text-color-light);
+    text-shadow: 1px 1px 3px var(--primary-dark), 1px -1px 3px var(--primary-dark),
+      -1px -1px 3px var(--primary-dark), -1px 1px 3px var(--primary-dark);
+  }
+  

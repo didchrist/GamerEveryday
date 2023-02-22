@@ -54,7 +54,7 @@
     color: var(--text-color-light);
   }
   h1 {
-    font-size: 40px;
+    font-size: 80px;
   }
   h2 {
     font-size: 30px;
@@ -73,10 +73,13 @@
   a {
     text-decoration: none;
   }
-  
-  .link_1 a:hover {
-    transform: scale(1.1);
+  a:hover,
+  a:link,
+  a:visited,
+  a:hover{
+    color:var(--text-color-light);
   }
+  
   main {
     display: flex;
     min-height: 30vw;
@@ -486,6 +489,8 @@
   
   .blue_transparent{
       background-color: rgb(4, 187, 255,0.3);
+      border-radius: 5px;
+      padding-left:10px;
   }
 
   form button
@@ -494,5 +499,18 @@
     padding: 0;
     background: none;
     color:var(--text-color-light)
+  }
+
+  .text-contour-1{
+    text-shadow: 1px 1px 0px var(--text-color), 1px -1px 0px var(--text-color),
+      -1px -1px 0px var(--text-color), -1px 1px 0px var(--text-color);
+  }
+  .text-contour-2{
+    text-shadow: 2px 2px 0px var(--text-color), 2px -2px 0px var(--text-color),
+      -2px -2px 0px var(--text-color), -2px 2px 0px var(--text-color);
+  }
+  .text-contour-3{
+    text-shadow: 3px 3px 0px var(--text-color), 3px -3px 0px var(--text-color),
+      -3px -3px 0px var(--text-color), -3px 3px 0px var(--text-color);
   }
   
