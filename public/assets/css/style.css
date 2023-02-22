@@ -55,6 +55,7 @@
   }
   h1 {
     font-size: 80px;
+    font-family: 'carbon-droidregular';
   }
   h2 {
     font-size: 30px;
@@ -501,16 +502,3 @@
     color:var(--text-color-light)  
   }
 
-  .text-contour-1{
-    text-shadow: 1px 1px 0px var(--text-color), 1px -1px 0px var(--text-color),
-      -1px -1px 0px var(--text-color), -1px 1px 0px var(--text-color);
-  }
-  .text-contour-2{
-    text-shadow: 2px 2px 0px var(--text-color), 2px -2px 0px var(--text-color),
-      -2px -2px 0px var(--text-color), -2px 2px 0px var(--text-color);
-  }
-  .text-contour-3{
-    text-shadow: 3px 3px 0px var(--text-color), 3px -3px 0px var(--text-color),
-      -3px -3px 0px var(--text-color), -3px 3px 0px var(--text-color);
-  }
-  
