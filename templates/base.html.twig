@@ -77,7 +77,10 @@
                 <li class="list {{ (app.request.get('_route') == 'app_register') ? 'active' : '' }}">                
                     <a href="{{path('app_register')}}">
                         <span class="icon">
-                            <i class="fa-solid fa-right-to-bracket"></i>
+                             <span class="fa-stack fa-1x ajust-icon">
+                                <i class="fa-solid fa-scroll fa-stack-1x pt-2"></i>
+                                <i class="fa-solid fa-feather-pointed fa-stack-1x fa-2xs fa-inverse ps-3"></i>
+                            </span>
                         </span>
                         <span class="text">S'inscrire</span>
                     </a>
@@ -87,17 +90,17 @@
                 <li class="list">                
                     <a href="{{path('app_logout')}}">
                         <span class="icon">
-                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <i class="fa-solid fa-id-badge"></i>
                         </span>
-                        <span class="text">Deconnecter</span>
+                        <span class="text">Profil</span>
                     </a>
                 </li>
                 <li class="list">                
                     <a href="{{path('app_logout')}}">
                         <span class="icon">
-                            <i class="fa-solid fa-adresse-card"></i>
+                            <i class="fa-solid fa-right-from-bracket"></i>
                         </span>
-                        <span class="text">Profil</span>
+                        <span class="text">Deconnecter</span>
                     </a>
                 </li>
                 {% endif %}
@@ -123,10 +126,10 @@
                 <a class="youtube btn-round" target="_blank" href="#"><i class="fa-brands fa-youtube "></i></a>
             </div>
             <div> 
-                <a href="#">Mentions légales</a> | 
-                <a href="#">Conditions d’utilisations </a> | 
-                <a href="#">Politique de confidentialité </a> | 
-                <a href="#">Nous contacter</a>
+                <a class="text-neon-blue" href="#">Mentions légales</a> | 
+                <a class="text-neon-pink" href="#">Conditions d’utilisations </a> | 
+                <a class="text-neon-blue" href="#">Politique de confidentialité </a> | 
+                <a class="text-neon-pink" href="#">Nous contacter</a>
             </div>
         </footer>
     </div>

@@ -14,7 +14,8 @@
 
         {% if app.user %}
             <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                Vous êtes connecté en tant que {{ app.user.userIdentifier }}
+                {# , <a href="{{ path('app_logout') }}">Logout</a> #}
             </div>
         {% endif %}
 
@@ -27,7 +28,7 @@
             <label class="text-neon-blue text-center col-1" for="password" >PASSWORD: </label>
             <input class="mx-5 px-3 blue_transparent col-7 rounded" type="password" name="password" id="inputPassword" autocomplete="current-password" required>
         </div>
-        <button class="no-deco" type="submit">
+        <button type="submit">
             <a class="text-center my-5 btn" style="--clr:var(--primary-light)" name="valider"><span>Valider</span><i></i></a>
         </button>
     

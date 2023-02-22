@@ -42,6 +42,7 @@
     min-height: 100vh;
     background: var(--background-dark);
     color:var(--text-color-light);
+    padding-bottom:60px;
   }
   
   p,
@@ -317,6 +318,9 @@
   .navigation ul li:nth-child(8).active ~ .indicator {
     transform: translateX(calc(12px + (85px * 7)));
   }
+  .navigation ul li:nth-child(9).active ~ .indicator {
+    transform: translateX(calc(12px + (85px * 8)));
+  }
   
   .btn {
     position: relative;
@@ -501,4 +505,9 @@
 }
 .legende {
   font-family: "final_frontier_old_styleRg";
+}
+/*ajuste l'icone d'inscription pour entré dans indicator 
+(le cercle de couleur dans la navbar)*/
+.ajust-icon{
+  top:-7px;
 }
