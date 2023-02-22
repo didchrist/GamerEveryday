@@ -6,13 +6,16 @@
 
     {% if groupes %}
     {% for groupe in groupes %}
+    <div class="d-flex m-3">
         <h2>{{ groupe.idGroup.groupName}}</h2>
+        <p>{{}}</p>
+        <button class="p-2 rounded mx-5">Détails</button>
+    </div>
     {% endfor %}
-    {% else %}
+    {% endif %}
     {{ form_start(groupForm) }}
     {{ form_row(groupForm.groupName)}}
     <button type="submit">Valider</button>
     {{ form_end(groupForm) }}
-    {% endif %}
 </div>
 {% endblock body %}
