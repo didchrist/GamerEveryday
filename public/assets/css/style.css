@@ -54,7 +54,8 @@
     color: var(--text-color-light);
   }
   h1 {
-    font-size: 40px;
+    font-size: 80px;
+    font-family: 'carbon-droidregular';
   }
   h2 {
     font-size: 30px;
@@ -495,4 +496,9 @@
     background: none;
     color:var(--text-color-light)  
   }
-
+.italique {
+  font-style: italic;
+}
+.legende {
+  font-family: "final_frontier_old_styleRg";
+}
