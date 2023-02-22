@@ -487,10 +487,12 @@
   .blue_transparent{
       background-color: rgb(4, 187, 255,0.3);
   }
+
   form button
   {
     border: none;
     padding: 0;
     background: none;
-    color:var(--text-color-light)
+    color:var(--text-color-light)  
   }
+
