@@ -38,24 +38,24 @@ class Group
         return $this->id;
     }
 
-    public function getNumGroup(): ?string
+    public function getGroupNum(): ?string
     {
         return $this->groupNum;
     }
 
-    public function setNumGroup(string $groupNum): self
+    public function setGroupNum(string $groupNum): self
     {
         $this->groupNum = $groupNum;
 
         return $this;
     }
 
-    public function getNameGroup(): ?string
+    public function getGroupName(): ?string
     {
         return $this->groupName;
     }
 
-    public function setNameGroup(string $groupName): self
+    public function setGroupName(string $groupName): self
     {
         $this->groupName = $groupName;
 

@@ -506,6 +506,12 @@
 .legende {
   font-family: "final_frontier_old_styleRg";
 }
+.logo-div {
+  position: absolute;
+  top: 0;
+  left: 2%;
+}
+
 /*ajuste l'icone d'inscription pour entré dans indicator 
 (le cercle de couleur dans la navbar)*/
 .ajust-icon{

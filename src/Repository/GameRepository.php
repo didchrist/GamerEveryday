@@ -46,7 +46,7 @@ class GameRepository extends ServiceEntityRepository
 
         $query = 'SELECT g.*, gu.id_user_id, u.username, u.email, gu.show_game FROM public.game AS g 
         LEFT JOIN game_user AS gu ON g.id = gu.id_game_id
-        AND id_user_id = :idUser
+        AND id_user_id = ?
         LEFT JOIN public.user AS u ON gu.id_user_id = u.id
         ORDER BY g.id ASC';
         $stmt = $conn->prepare($query);

@@ -21,6 +21,11 @@
     </head>
     <body>
         <div class="navigation">
+            <div class="logo-div">
+                <a href="{{ path('app_home')}}">
+                    <img src="{{ asset('assets/img/logo_transparent_GamerEveryday.svg')}}" alt="logo GamerEveryday" width="100px">
+                </a>
+            </div>
             <ul>
                 <li class="list {{ (app.request.get('_route') == 'app_home') ? 'active' : '' }}">
                     <a href="{{ path('app_home')}}">
@@ -126,10 +131,10 @@
                 <a class="youtube btn-round" target="_blank" href="#"><i class="fa-brands fa-youtube "></i></a>
             </div>
             <div> 
-                <a class="text-neon-blue" href="#">Mentions légales</a> | 
-                <a class="text-neon-pink" href="#">Conditions d’utilisations </a> | 
-                <a class="text-neon-blue" href="#">Politique de confidentialité </a> | 
-                <a class="text-neon-pink" href="#">Nous contacter</a>
+                <a class="text-neon-pink" href="#">Mentions légales</a> | 
+                <a class="text-neon-blue" href="#">Conditions d’utilisations </a> | 
+                <a class="text-neon-pink" href="#">Politique de confidentialité </a> | 
+                <a class="text-neon-blue" href="#">Nous contacter</a>
             </div>
         </footer>
     </div>

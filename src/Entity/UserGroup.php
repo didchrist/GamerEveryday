@@ -18,11 +18,11 @@ class UserGroup
 
     #[ORM\OneToOne(inversedBy: 'userGroup', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?group $id_group = null;
+    private ?Group $id_group = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $id_user = null;
+    private ?User $id_user = null;
 
     public function getId(): ?int
     {
@@ -41,24 +41,24 @@ class UserGroup
         return $this;
     }
 
-    public function getIdGroup(): ?group
+    public function getIdGroup(): ?Group
     {
         return $this->id_group;
     }
 
-    public function setIdGroup(group $id_group): self
+    public function setIdGroup(Group $id_group): self
     {
         $this->id_group = $id_group;
 
         return $this;
     }
 
-    public function getIdUser(): ?user
+    public function getIdUser(): ?User
     {
         return $this->id_user;
     }
 
-    public function setIdUser(?user $id_user): self
+    public function setIdUser(?User $id_user): self
     {
         $this->id_user = $id_user;
 
