@@ -43,6 +43,7 @@
     background: var(--background-dark);
     color:var(--text-color-light);
     padding-bottom:60px;
+    padding-top:100px;
   }
   
   p,
@@ -497,15 +498,14 @@
   {
     border: none;
     padding: 0;
-    background: none;
-    color:var(--text-color-light)  
+    background: none; 
   }
   .button-none
   {
     border: none;
     padding: 0;
     background: none;
-    color:var(--text-color-light)  
+    color:var(--text-color-light);  
   }
 .italique {
   font-style: italic;

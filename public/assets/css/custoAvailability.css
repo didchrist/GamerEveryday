@@ -1,19 +1,39 @@
+:root {
+  --primary: #0594d0;
+  --primary-light: #04bbff;
+  --primary-lightdark: #007198;
+  --primary-dark: #003c57;
+  --second: #bd8ae4;
+  --second-light: #fa4eda;
+  --second-dark: #7f85ed;
+  --dark: #0c0c0c;
+  --danger: #bc0000;
+  --light: #fff;
+  --background-light: #fafafa;
+  --background-dark: #051c24;
+  --text-color: #051c24;
+  --text-color-light: #fafafa;
+  --box-shadow: rgba(60 64 67 0.3) 0 1px 2px 0,
+    rgba(60 64 67 0.15) 0 2px 6px 2px;
+  --border: 1px solid #fafafa;
+}
 #listAvailability,
 #listAvailabilityGlobal {
-  background-color: rgba(80, 235, 95, 0.712);
+  background-color: var(--second-dark);
   width: 80%;
   border: 1px solid black;
   border-radius: 15px;
-  color: rgba(15, 29, 229, 0.805);
+  color: var(--primary-dark);
   display: flex;
   margin: 2%;
   min-height: 100px;
   flex-wrap: wrap;
+  box-shadow: inset 0px 2px 5px var(--light), inset 0px -2px 5px var(--dark);
 }
 #listAvailability .availability,
 #listAvailabilityGlobal .availability {
   border: solid 1px black;
-  background-color: rgb(76, 200, 26);
+  background-color: var(--primary-light);
   width: auto;
   height: auto;
   border-radius: 10px;
@@ -28,10 +48,10 @@
   margin-top: -2px;
   background-color: unset;
   border: none;
-  color: rgba(255, 0, 0, 0.815);
+  color: var(--dark);
   transition: all 0.5s;
 }
 #listAvailability .availability button:hover,
 #listAvailabilityGlobal .availability button:hover {
-  color: rgba(146, 24, 24, 0.582);
+  color: var(--dark);
 }

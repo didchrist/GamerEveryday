@@ -6,7 +6,7 @@
 
 {% block body %}
 <div class="d-flex flex-column">
-	<h2>Disponibilité Global</h2>
+	<h2 class="text-neon-pink" >Disponibilité Global</h2>
 	<div>
 		<p id="statusAjaxGlobal"></p>
 	</div>
@@ -16,14 +16,16 @@
 				<p>{{ availabilityGlobal.startDate | date("H:i d/m/Y", "Europe/Paris")}}
 					=>
 					{{ availabilityGlobal.endDate | date("H:i d/m/Y", "Europe/Paris") }}</p>
-				<button class="ajaxDeleteAvailabilityGlobal">x</button>
+				<button class="ajaxDeleteAvailabilityGlobal"> 
+					<i class="fa-regular fa-circle-xmark"></i>
+				</button>
 			</div>
 		{% endfor %}
 	</div>
 	<div id="start_date_time"></div>
 	<div id="end_date_time"></div>
 	<button class="button-none" id="ajaxSendGlobal">
-            <a class="text-center my-5 btn" style="--clr:var(--primary-light)" name="valider"><span>S'inscrire</span><i></i></a>
+            <a class="my-5 btn" style="--clr:var(--primary-light)" name="valider"><span>Valider</span><i></i></a>
 	</button>
 	{{ form_start(availabilityForm) }}
 	{{ form_row(availabilityForm.game)}}
@@ -36,7 +38,9 @@
 				<p>{{ availability.startDate | date("H:i d/m/Y", "Europe/Paris")}}
 					=>
 					{{ availability.endDate | date("H:i d/m/Y", "Europe/Paris") }}</p>
-				<button class="ajaxDeleteAvailability">x</button>
+				<button class="ajaxDeleteAvailability">
+					<i class="fa-regular fa-circle-xmark"></i>
+				</button>
 			</div>
 		{% endfor %}
 	</div>
@@ -48,7 +52,7 @@
 	<div id="start_date_time_2"></div>
 	<div id="end_date_time_2"></div>
 	<button class="button-none" id="ajaxSend">
-            <a class="text-center my-5 btn" style="--clr:var(--primary-light)" name="valider"><span>S'inscrire</span><i></i></a>
+            <a class="my-5 btn" style="--clr:var(--primary-light)" name="valider"><span>Valider</span><i></i></a>
 	</button>
 	{{ form_end(availabilityForm) }}
 </div>
