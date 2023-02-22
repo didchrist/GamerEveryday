@@ -2,8 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Group;
+use App\Entity\UserGroup;
+use App\Form\GroupType;
+use App\Repository\GroupRepository;
+use App\Repository\UserGroupRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -11,10 +17,27 @@ use Symfony\Component\Routing\Annotation\Route;
 class GroupController extends AbstractController
 {
     #[Route('/group', name: 'app_group')]
-    public function index(): Response
+    public function index(UserGroupRepository $userGroupRepository, Request $request, GroupRepository $groupRepository): Response
     {
+        $user = $this->getUser();
+
+        $groupes = $userGroupRepository->findBy(['id_user' => $user->getId()]);
+        $group = new Group();
+        $form = $this->createForm(GroupType::class, $group);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $group->setGroupNum('GROUP00001');
+            $groupRepository->save($group, true);
+            $userGroup = new UserGroup;
+            $userGroup->setIdGroup($group)
+                    ->setIdUser($user)
+                    ->setRole('Createur');
+            $userGroupRepository->save($userGroup, true);
+        }
         return $this->render('group/index.html.twig', [
-            'controller_name' => 'GroupController',
+            'groupes' => $groupes,
+            'groupForm' => $form->createView(),
         ]);
     }
 }

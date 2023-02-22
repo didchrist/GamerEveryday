@@ -1,20 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GroupController!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="d-flex col-12 flex-column align-items-center">
+    <h1 class="text-neon-blue">Gestionnaire de groupe</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/16010-47-07/Desktop/symfony/GamerEveryday/src/Controller/GroupController.php'|file_link(0) }}">src/Controller/GroupController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/16010-47-07/Desktop/symfony/GamerEveryday/templates/group/index.html.twig'|file_link(0) }}">templates/group/index.html.twig</a></code></li>
-    </ul>
+    {% if groupes %}
+    {% for groupe in groupes %}
+        <h2>{{ groupe.idGroup.groupName}}</h2>
+    {% endfor %}
+    {% else %}
+    {{ form_start(groupForm) }}
+    {{ form_row(groupForm.groupName)}}
+    <button type="submit">Valider</button>
+    {{ form_end(groupForm) }}
+    {% endif %}
 </div>
-{% endblock %}
+{% endblock body %}

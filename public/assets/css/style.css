@@ -502,3 +502,8 @@
 .legende {
   font-family: "final_frontier_old_styleRg";
 }
+.logo-div {
+  position: absolute;
+  top: 0;
+  left: 2%;
+}
