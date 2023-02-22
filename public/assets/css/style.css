@@ -500,6 +500,13 @@
     background: none;
     color:var(--text-color-light)  
   }
+  .button-none
+  {
+    border: none;
+    padding: 0;
+    background: none;
+    color:var(--text-color-light)  
+  }
 .italique {
   font-style: italic;
 }

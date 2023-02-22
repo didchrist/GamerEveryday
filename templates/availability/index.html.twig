@@ -22,7 +22,9 @@
 	</div>
 	<div id="start_date_time"></div>
 	<div id="end_date_time"></div>
-	<button id="ajaxSendGlobal">Valider</button>
+	<button class="button-none" id="ajaxSendGlobal">
+            <a class="text-center my-5 btn" style="--clr:var(--primary-light)" name="valider"><span>S'inscrire</span><i></i></a>
+	</button>
 	{{ form_start(availabilityForm) }}
 	{{ form_row(availabilityForm.game)}}
 	<div>
@@ -45,7 +47,9 @@
 
 	<div id="start_date_time_2"></div>
 	<div id="end_date_time_2"></div>
-	<button id="ajaxSend">Valider</button>
+	<button class="button-none" id="ajaxSend">
+            <a class="text-center my-5 btn" style="--clr:var(--primary-light)" name="valider"><span>S'inscrire</span><i></i></a>
+	</button>
 	{{ form_end(availabilityForm) }}
 </div>
 	<script src="{{ asset('assets/js/ajaxAvailability.js')}}"></script>
