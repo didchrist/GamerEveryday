@@ -2,31 +2,28 @@
 
 namespace App\Entity;
 
-use App\Repository\UserGroupRepository;
+use App\Repository\GameGroupRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: UserGroupRepository::class)]
-class UserGroup
+#[ORM\Entity(repositoryClass: GameGroupRepository::class)]
+class GameGroup
 {
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: "IDENTITY")]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $role = null;
+    #[ORM\ManyToMany(targetEntity: Game::class)]
+    private Collection $id_Game;
 
-    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'userGroups')]
-    private Collection $id_User;
-
-    #[ORM\ManyToMany(targetEntity: Group::class, inversedBy: 'userGroups')]
+    #[ORM\ManyToMany(targetEntity: Group::class, inversedBy: 'gameGroups')]
     private Collection $id_Group;
 
     public function __construct()
     {
-        $this->id_User = new ArrayCollection();
+        $this->id_Game = new ArrayCollection();
         $this->id_Group = new ArrayCollection();
     }
 
@@ -35,38 +32,26 @@ class UserGroup
         return $this->id;
     }
 
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    public function setRole(string $role): self
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
     /**
-     * @return Collection<int, User>
+     * @return Collection<int, Game>
      */
-    public function getIdUser(): Collection
+    public function getIdGame(): Collection
     {
-        return $this->id_User;
+        return $this->id_Game;
     }
 
-    public function addIdUser(User $idUser): self
+    public function addIdGame(Game $idGame): self
     {
-        if (!$this->id_User->contains($idUser)) {
-            $this->id_User->add($idUser);
+        if (!$this->id_Game->contains($idGame)) {
+            $this->id_Game->add($idGame);
         }
 
         return $this;
     }
 
-    public function removeIdUser(User $idUser): self
+    public function removeIdGame(Game $idGame): self
     {
-        $this->id_User->removeElement($idUser);
+        $this->id_Game->removeElement($idGame);
 
         return $this;
     }

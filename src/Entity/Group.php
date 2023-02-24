@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\GroupRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GroupRepository::class)]
@@ -12,25 +13,32 @@ use Doctrine\ORM\Mapping as ORM;
 class Group
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy:"IDENTITY")]
+    #[ORM\GeneratedValue(strategy: "IDENTITY")]
     #[ORM\Column]
     private ?int $id = null;
 
     #[ORM\Column(length: 20)]
-    private ?string $groupNum = null;
+    private ?string $numGroup = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $groupName = null;
+    #[ORM\Column(length: 255)]
+    private ?string $nameGroup = null;
 
-    #[ORM\OneToOne(mappedBy: 'id_group', cascade: ['persist', 'remove'])]
-    private ?UserGroup $userGroup = null;
+    #[ORM\Column]
+    private ?bool $accesGroup = null;
 
-    #[ORM\OneToMany(mappedBy: 'id_group', targetEntity: GroupGame::class, orphanRemoval: true)]
-    private Collection $groupGames;
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $descriptionGroup = null;
+
+    #[ORM\ManyToMany(targetEntity: UserGroup::class, mappedBy: 'id_Group')]
+    private Collection $userGroups;
+
+    #[ORM\ManyToMany(targetEntity: GameGroup::class, mappedBy: 'id_Group')]
+    private Collection $gameGroups;
 
     public function __construct()
     {
-        $this->groupGames = new ArrayCollection();
+        $this->userGroups = new ArrayCollection();
+        $this->gameGroups = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -38,72 +46,103 @@ class Group
         return $this->id;
     }
 
-    public function getGroupNum(): ?string
+    public function getNumGroup(): ?string
     {
-        return $this->groupNum;
+        return $this->numGroup;
     }
 
-    public function setGroupNum(string $groupNum): self
+    public function setNumGroup(string $numGroup): self
     {
-        $this->groupNum = $groupNum;
+        $this->numGroup = $numGroup;
 
         return $this;
     }
 
-    public function getGroupName(): ?string
+    public function getNameGroup(): ?string
     {
-        return $this->groupName;
+        return $this->nameGroup;
     }
 
-    public function setGroupName(string $groupName): self
+    public function setNameGroup(string $nameGroup): self
     {
-        $this->groupName = $groupName;
+        $this->nameGroup = $nameGroup;
 
         return $this;
     }
 
-    public function getUserGroup(): ?UserGroup
+    public function isAccesGroup(): ?bool
     {
-        return $this->userGroup;
+        return $this->accesGroup;
     }
 
-    public function setUserGroup(UserGroup $userGroup): self
+    public function setAccesGroup(bool $accesGroup): self
     {
-        // set the owning side of the relation if necessary
-        if ($userGroup->getIdGroup() !== $this) {
-            $userGroup->setIdGroup($this);
-        }
+        $this->accesGroup = $accesGroup;
 
-        $this->userGroup = $userGroup;
+        return $this;
+    }
+
+    public function getDescriptionGroup(): ?string
+    {
+        return $this->descriptionGroup;
+    }
+
+    public function setDescriptionGroup(?string $descriptionGroup): self
+    {
+        $this->descriptionGroup = $descriptionGroup;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, GroupGame>
+     * @return Collection<int, UserGroup>
      */
-    public function getGroupGames(): Collection
+    public function getUserGroups(): Collection
     {
-        return $this->groupGames;
+        return $this->userGroups;
     }
 
-    public function addGroupGame(GroupGame $groupGame): self
+    public function addUserGroup(UserGroup $userGroup): self
     {
-        if (!$this->groupGames->contains($groupGame)) {
-            $this->groupGames->add($groupGame);
-            $groupGame->setIdGroup($this);
+        if (!$this->userGroups->contains($userGroup)) {
+            $this->userGroups->add($userGroup);
+            $userGroup->addIdGroup($this);
         }
 
         return $this;
     }
 
-    public function removeGroupGame(GroupGame $groupGame): self
+    public function removeUserGroup(UserGroup $userGroup): self
     {
-        if ($this->groupGames->removeElement($groupGame)) {
-            // set the owning side to null (unless already changed)
-            if ($groupGame->getIdGroup() === $this) {
-                $groupGame->setIdGroup(null);
-            }
+        if ($this->userGroups->removeElement($userGroup)) {
+            $userGroup->removeIdGroup($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, GameGroup>
+     */
+    public function getGameGroups(): Collection
+    {
+        return $this->gameGroups;
+    }
+
+    public function addGameGroup(GameGroup $gameGroup): self
+    {
+        if (!$this->gameGroups->contains($gameGroup)) {
+            $this->gameGroups->add($gameGroup);
+            $gameGroup->addIdGroup($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGameGroup(GameGroup $gameGroup): self
+    {
+        if ($this->gameGroups->removeElement($gameGroup)) {
+            $gameGroup->removeIdGroup($this);
         }
 
         return $this;

@@ -21,15 +21,20 @@ class GroupController extends AbstractController
     {
         $user = $this->getUser();
 
-        $groupes = $userGroupRepository->findBy(['id_user' => $user->getId()]);
+        $test = $groupRepository->findGroupById($user);
+        dd($test);
         $group = new Group();
         $form = $this->createForm(GroupType::class, $group);
         $form->handleRequest($request);
-        dd($groupes);
+        foreach ($groupes as $groupe) {
+            $idGroup = $groupe->getIdGroup()->getId();
+            $groupUsers[] = $userGroupRepository->findBy(['id_group' => $idGroup]);
+            dd($groupUsers);
+        }
         if ($form->isSubmitted() && $form->isValid()) {
-            $lastGroup = $groupRepository->findBy([],['id' => 'DESC'], 1);
+            $lastGroup = $groupRepository->findBy([], ['id' => 'DESC'], 1);
             if ($lastGroup) {
-                $numGroup  = 'GROUP'. ($lastGroup[0]->getId() + 1);
+                $numGroup  = 'GROUP' . ($lastGroup[0]->getId() + 1);
                 $group->setGroupNum($numGroup);
             } else {
                 $group->setGroupNum('GROUP00001');
@@ -37,14 +42,15 @@ class GroupController extends AbstractController
             $groupRepository->save($group, true);
             $userGroup = new UserGroup;
             $userGroup->setIdGroup($group)
-                    ->setIdUser($user)
-                    ->setRole('Createur');
+                ->setIdUser($user)
+                ->setRole('Createur');
             $userGroupRepository->save($userGroup, true);
 
             return $this->redirectToRoute('app_group');
         }
         return $this->render('group/index.html.twig', [
             'groupes' => $groupes,
+            'users' => $groupUsers,
             'groupForm' => $form->createView(),
         ]);
     }

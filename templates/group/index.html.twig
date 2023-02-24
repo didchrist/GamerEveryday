@@ -1,21 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="d-flex col-12 flex-column align-items-center">
-    <h1 class="text-neon-blue">Gestionnaire de groupe</h1>
+	<div class="d-flex col-12 flex-column align-items-center">
+		<h1 class="text-neon-blue">Gestionnaire de groupe</h1>
 
-    {% if groupes %}
-    {% for groupe in groupes %}
-    <div class="d-flex m-3">
-        <h2>{{ groupe.idGroup.groupName}}</h2>
-        <p>{{}}</p>
-        <button class="p-2 rounded mx-5">Détails</button>
-    </div>
-    {% endfor %}
-    {% endif %}
-    {{ form_start(groupForm) }}
-    {{ form_row(groupForm.groupName)}}
-    <button type="submit">Valider</button>
-    {{ form_end(groupForm) }}
-</div>
+		{% if groupes %}
+			{% for groupe in groupes %}
+				<div class="d-flex m-3">
+					<h2>{{ groupe.idGroup.groupName}}</h2>
+					{% for users in groupUsers %}{% endfor %}
+					<p>{{}}</p>
+					<button class="p-2 rounded mx-5">Détails</button>
+				</div>
+			{% endfor %}
+		{% endif %}
+		{{ form_start(groupForm) }}
+		{{ form_row(groupForm.groupName)}}
+		<button type="submit">Valider</button>
+		{{ form_end(groupForm) }}
+	</div>
 {% endblock body %}

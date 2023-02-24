@@ -50,11 +50,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $roles = [];
 
+    #[ORM\ManyToMany(targetEntity: UserGroup::class, mappedBy: 'id_User')]
+    private Collection $userGroups;
+
     public function __construct()
     {
         $this->messages = new ArrayCollection();
         $this->availabilities = new ArrayCollection();
         $this->gameUsers = new ArrayCollection();
+        $this->userGroups = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -147,6 +151,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->id;
+    }
+
     /**
      * @return Collection<int, Availability>
      */
@@ -222,6 +231,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserGroup>
+     */
+    public function getUserGroups(): Collection
+    {
+        return $this->userGroups;
+    }
+
+    public function addUserGroup(UserGroup $userGroup): self
+    {
+        if (!$this->userGroups->contains($userGroup)) {
+            $this->userGroups->add($userGroup);
+            $userGroup->addIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserGroup(UserGroup $userGroup): self
+    {
+        if ($this->userGroups->removeElement($userGroup)) {
+            $userGroup->removeIdUser($this);
+        }
 
         return $this;
     }
