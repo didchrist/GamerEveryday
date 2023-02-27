@@ -30,9 +30,13 @@ class Game
     #[ORM\OneToMany(mappedBy: 'game', targetEntity: Availability::class)]
     private Collection $id_availability;
 
+    #[ORM\OneToMany(mappedBy: 'id_game', targetEntity: GameUser::class, orphanRemoval: true)]
+    private Collection $gameUsers;
+
     public function __construct()
     {
         $this->id_availability = new ArrayCollection();
+        $this->gameUsers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -120,5 +124,35 @@ class Game
     public function __toString()
     {
         return $this->getGameName();
+    }
+
+    /**
+     * @return Collection<int, GameUser>
+     */
+    public function getGameUsers(): Collection
+    {
+        return $this->gameUsers;
+    }
+
+    public function addGameUser(GameUser $gameUser): self
+    {
+        if (!$this->gameUsers->contains($gameUser)) {
+            $this->gameUsers->add($gameUser);
+            $gameUser->setIdGame($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGameUser(GameUser $gameUser): self
+    {
+        if ($this->gameUsers->removeElement($gameUser)) {
+            // set the owning side to null (unless already changed)
+            if ($gameUser->getIdGame() === $this) {
+                $gameUser->setIdGame(null);
+            }
+        }
+
+        return $this;
     }
 }

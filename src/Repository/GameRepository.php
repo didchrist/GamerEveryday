@@ -42,18 +42,30 @@ class GameRepository extends ServiceEntityRepository
     }
     public function findAllGameByUser($idUser) 
     {
-        $conn = $this->getEntityManager()->getConnection();
+        //$conn = $this->getEntityManager()->getConnection();
 
-        $query = 'SELECT g.*, gu.id_user_id, u.username, u.email, gu.show_game FROM public.game AS g 
-        LEFT JOIN game_user AS gu ON g.id = gu.id_game_id
-        AND id_user_id = ?
-        LEFT JOIN public.user AS u ON gu.id_user_id = u.id
-        ORDER BY g.id ASC';
-        $stmt = $conn->prepare($query);
-        $data = $stmt->executeQuery([$idUser]);
+        // $query = 'SELECT g.*, gu.id_user_id, u.username, u.email, gu.show_game 
+        // FROM public.game AS g 
+        // LEFT JOIN game_user AS gu ON g.id = gu.id_game_id
+        // AND id_user_id = ?
+        // LEFT JOIN public.user AS u ON gu.id_user_id = u.id
+        // ORDER BY g.id ASC';
+        // $stmt = $conn->prepare($query);
+        // $data = $stmt->executeQuery([$idUser]);
 
-        return $data->fetchAllAssociative();
-    }
+        // return $data->fetchAllAssociative();
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('g', 'u.id as id_user', 'u.username', 'u.email', 'gu.showGame')
+            ->from('App\Entity\Game', 'g')
+            ->leftJoin('g.gameUsers', 'gu', 'WITH',"gu.id_user = $idUser")
+            ->leftJoin('gu.id_user', 'u')
+            ->orderBy('g.id', 'ASC');
+        // dd($query);
+        $data = $query->getQuery()->getResult();
+        //dd($data);
+
+        return $data;
+        }
 
 //    /**
 //     * @return Game[] Returns an array of Game objects

@@ -19,6 +19,7 @@
     --second-light: #fa4eda;
     --second-dark: #7f85ed;
     --dark: #0c0c0c;
+    --grey-light: #bababa;
     --danger: #bc0000;
     --light: #fff;
     --background-light: #fafafa;
@@ -44,6 +45,47 @@
     color:var(--text-color-light);
     padding-bottom:60px;
     padding-top:100px;
+  }
+
+   /* Extra large devices (large laptops and desktops, 1200px and down) */
+   @media only screen and (min-width: 1201px) {
+    body{font-size: 16px;}
+    h1{font-size: 25px;}
+    h2{font-size: 22px;}
+    }
+    /* Extra large devices (large laptops and desktops, 1200px and down) */
+    @media only screen and (max-width: 1200px) {
+    body{font-size: 15px;}
+    h1{font-size: 23px;}
+    h2{font-size: 20px;}
+    }
+  
+  /* Large devices (laptops/desktops, 992px and down) */
+  @media only screen and (max-width: 992px){
+    body{font-size: 13px;}
+    h1{font-size: 19px;}
+    h2{font-size: 17px;}
+  }
+  
+  /* Medium devices (landscape tablets, 768px and down) */
+  @media only screen and (max-width: 768px) {
+    body{font-size: 12px;}
+    h1{font-size: 17px;}
+    h2{font-size: 15px;}
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+    body{font-size: 11px;}
+    h1{font-size: 16px;}
+    h2{font-size: 14px;}
+  }
+
+  .text-light{
+    color:var(--text-color-light) !important;
+  }
+  .text-dark{
+    color:var(--text-color) !important;
   }
   
   p,
@@ -86,11 +128,7 @@
     margin: 50px;
   }
   
-  .dropdown-item:hover,
-  .dropdown-item:focus {
-    color: #1e2125;
-    background-color: #0d6efd;
-  }
+
   .border-1px {
     border: 1px solid black;
   }
@@ -523,4 +561,23 @@
 (le cercle de couleur dans la navbar)*/
 .ajust-icon{
   top:-7px;
+}
+.no-deco {
+  border: none;
+  background-color: unset;
+}
+.no-deco:hover {
+  color:var(--text-color-light);
+}
+.fond-neon-possede{
+  background-color: var(--background-light);
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px var(--primary-light), 1px -1px 3px var(--primary-light),
+    -1px -1px 3px var(--primary-light), -1px 1px 3px var(--primary-light);
+}
+.fond-neon-non-possede{
+  background-color: var(--background-light);
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px var(--grey-light), 1px -1px 3px var(--grey-light),
+    -1px -1px 3px var(--grey-light), -1px 1px 3px var(--grey-light);
 }

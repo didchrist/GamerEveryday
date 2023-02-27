@@ -1,7 +1,0 @@
-.no-deco {
-    border: none;
-    background-color: unset;
-}
-.no-deco:hover {
-    color:var(--text-color-light);
-}

@@ -20,7 +20,7 @@ class GameUser
     #[ORM\JoinColumn(nullable: false)]
     private ?User $id_user = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'gameUsers')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Game $id_game = null;
 
