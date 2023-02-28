@@ -605,7 +605,7 @@
   background-position: center center;
   background-attachment: fixed;
   background-size:cover;
-  position:sticky;
+  position:absolute;
   top: 0;
   left: 0;
   height: 100%;
