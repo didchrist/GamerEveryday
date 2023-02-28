@@ -29,6 +29,7 @@
     --box-shadow: rgba(60 64 67 0.3) 0 1px 2px 0,
       rgba(60 64 67 0.15) 0 2px 6px 2px;
     --border: 1px solid #fafafa;
+    --icon-size: 80px;
   }
   * {
     margin: 0;
@@ -40,7 +41,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 100%;
     background: var(--background-dark);
     color:var(--text-color-light);
     padding-bottom:60px;
@@ -95,7 +96,7 @@
   a,
   label,
   th {
-    color: var(--text-color-light);
+    color: var(--text-color-light) !important;
   }
   h1 {
     font-size: 80px;
@@ -157,7 +158,9 @@
     text-align: right;
   }
   
-  .center {
+  .center-card {
+    display: flex;
+    justify-content: center;
     text-align: center;
   }
   
@@ -580,4 +583,33 @@
   border-radius: 5px;
   box-shadow: 1px 1px 3px var(--grey-light), 1px -1px 3px var(--grey-light),
     -1px -1px 3px var(--grey-light), -1px 1px 3px var(--grey-light);
+}
+
+.card{
+  background-color: var(--background-dark);
+  box-shadow: inset 0px 2px 5px var(--light), inset 0px -2px 5px var(--dark);
+  border-radius: 5px;
+}
+
+.icon-game{
+  border-radius: 5px;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cover-game {
+  background-image: url('../img/page/game.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size:cover;
+  position:sticky;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  overflow-x: hidden;
 }
