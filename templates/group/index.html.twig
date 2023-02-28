@@ -6,17 +6,23 @@
 
 		{% if groupes %}
 			{% for groupe in groupes %}
-				<div class="d-flex m-3">
-					<h2>{{ groupe.idGroup.groupName}}</h2>
-					{% for users in groupUsers %}{% endfor %}
-					<p>{{}}</p>
-					<button class="p-2 rounded mx-5">Détails</button>
+				<div class="d-flex m-3 groupe">
+					<h2>{{ groupe.nameGroup}}</h2>
+					{% for user in groupe.users %}
+					<p>{{ user.username}}</p>
+					<p>{{ user.role}}</p>
+					{% endfor %}
+					<a href="{{ path('app_detail_group', { 'id': groupe.id})}}" class="p-2 rounded mx-5">Détails</a>
 				</div>
 			{% endfor %}
 		{% endif %}
 		{{ form_start(groupForm) }}
-		{{ form_row(groupForm.groupName)}}
-		<button type="submit">Valider</button>
+		<button id="ajaxAdd" type="submit">Valider</button>
 		{{ form_end(groupForm) }}
 	</div>
+	<script src="{{ asset('assets/js/ajaxGroup.js')}}"></script>
+	<script>
+		var urlAddGroup = "{{ path('app_add_group')| escape('js')}}";
+		var urlDetailGroup = "{{ path('app_detail_group', {'id': 'id'}) |escape('js')}}";
+	</script>
 {% endblock body %}

@@ -10,12 +10,13 @@ use App\Entity\GameUser;
 use App\Entity\Message;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
-class UsersFixtures extends Fixture
+class UsersFixtures extends Fixture implements FixtureInterface
 {
     private UserPasswordHasherInterface $userPasswordHasher;
 
@@ -27,6 +28,8 @@ class UsersFixtures extends Fixture
     {
         $faker = Factory::create('fr_FR');
 
+
+        // fausse liste de jeux
         $game = new Game;
         $allgame = [];
         $game->setGameNum('GAME01')
@@ -205,9 +208,11 @@ class UsersFixtures extends Fixture
             ->setNumberOfPlayer(4)
             ->setCategory('FPS');
         $allgame[] = $game;
+        $num = 0;
         $manager->persist($game);
         $manager->flush();
 
+        // fausse liste d'utilisateur avec useradmin en mdp
         for ($i = 1; $i <= 100; $i++) {
             $user = new User;
             $user->setUsername($faker->userName())
@@ -217,7 +222,7 @@ class UsersFixtures extends Fixture
             $manager->persist($user);
 
 
-
+            //fausse liste de message par utilisateur
             for ($m = 0; $m <= mt_rand(0, 4); $m++) {
                 $message = new Message;
 
@@ -226,6 +231,7 @@ class UsersFixtures extends Fixture
 
                 $manager->persist($message);
             }
+            //fausse liste de disponibilité par jeux aléatoire et par utilisateur 
             for ($j = 1; $j <= mt_rand(1, 10); $j++) {
                 $availability = new Availability;
                 $key = array_rand($allgame);
@@ -245,6 +251,7 @@ class UsersFixtures extends Fixture
                     ->setGame($allgame[$key]);
                 $manager->persist($availability);
             }
+            //fausse liste de disponibilité par utilisateur
             for ($o = 1; $o <= mt_rand(1, 5); $o++) {
                 $availability = new AvailabilityGlobal;
 
@@ -255,8 +262,10 @@ class UsersFixtures extends Fixture
                     ->setUserId($user);
                 $manager->persist($availability);
             }
-        }
 
-        $manager->flush();
+            $manager->flush();
+            $name = 'USER'.$i;
+            $this->addReference($name, $user);
+        }
     }
 }

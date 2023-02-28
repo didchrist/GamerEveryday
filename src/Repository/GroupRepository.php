@@ -60,7 +60,6 @@ class GroupRepository extends ServiceEntityRepository
                 )
         );
         $data = $query->getQuery()->getResult();
-        dd($data);
 
         return $data;
     }
