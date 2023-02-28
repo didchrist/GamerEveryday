@@ -1,12 +1,22 @@
 .text-neon-pink {
     color: var(--text-color-light);
-    text-shadow: 1px 1px 3px var(--second-light), 1px -1px 3px var(--second-light),
-      -1px -1px 3px var(--second-light), -1px 1px 3px var(--second-light);
+    text-shadow: 1px 1px 3px var(--second), 1px -1px 3px var(--second),
+      -1px -1px 3px var(--second), -1px 1px 3px var(--second);
   }
   .text-neon-blue {
     color: var(--text-color-light);
     text-shadow: 1px 1px 3px var(--primary), 1px -1px 3px var(--primary),
       -1px -1px 3px var(--primary), -1px 1px 3px var(--primary);
+  }
+a.text-neon-pink:hover {
+    color: var(--text-color-light);
+    text-shadow: 1px 1px 3px var(--second-light), 1px -1px 3px var(--second-light),
+      -1px -1px 3px var(--second-light), -1px 1px 3px var(--second-light);
+  }
+  a.text-neon-blue:hover{
+    color: var(--text-color-light);
+    text-shadow: 1px 1px 3px var(--primary-light), 1px -1px 3px var(--primary-light),
+      -1px -1px 3px var(--primary-light), -1px 1px 3px var(--primary-light);
   }
   .text-contour{
     text-shadow: 0px 0px 0px var(--text-color), 3px -3px 0px var(--text-color),

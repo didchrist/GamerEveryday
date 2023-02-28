@@ -5,44 +5,51 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/custoGame.css')}}">
 {% endblock stylesheets %}
 {% block body %}
-	<div class="example-wrapper">
-		<h1 class="text-neon-blue">Liste de jeux</h1>
-		<div></div>
+<div class="cover-game">
+<div class="container-fluid mx-5">
+	<div class="row center-card">
+		<h1 class="text-neon-blue text-center mt-5 pt-3">Liste de jeux</h1>
 		{% for game in games %}
 		{# {{ dump(games) }} #}
-			<h2 class="text-neon-pink">{{game.0.gameName}}</h2>
-			{% if game.0.numberOfPlayer < 100 %}
-				<p class="text-light">nombre de joueur max :
-					{{game.0.numberOfPlayer}}</p>
-			{% else %}
-				<p class="text-light">nombre de joueur libre</p>
-			<p class="text-light">Type :
-				{{game.0.category}}</p>
-			{% endif %}
-			<form class="form-game" method="post">
-				<input type="hidden" name="gameId" value="{{game.0.id}}">
-				{% if game.username == null %}
-					<button class="fond-neon-non-possede" type="submit">Je possède ce jeu</button>
+		<div class="col-lg-2 col-md-4 col-sm-12 mt-3 mx-2">
+				<img class="icon-game" src="{{ asset('assets/img/icone/'~game.0.gameName~'.svg')}}">
+				<p class="text-neon-pink">{{game.0.gameName}}</p>
+				{# {% if game.0.numberOfPlayer < 100 %}
+					<p class="text-light">nombre de joueur max :
+						{{game.0.numberOfPlayer}}</p>
 				{% else %}
-					<button class="fond-neon-possede" type="submit">Je ne possède plus ce jeu</button>
+					<p class="text-light">nombre de joueur libre</p>
+				<p class="text-light">Type :
+					{{game.0.category}}</p>
 				{% endif %}
-				{% if game.username != null %}
-					<label class="switch">
-						{% if game.showGame == false %}
-							<input class="eventCheckbox" type="checkbox">
-						{% else %}
-							<input class="eventCheckbox" type="checkbox" checked>
-						{% endif %}
-						<span class="slider round"></span>
-					</label>
+				<form class="form-game" method="post">
+					<input type="hidden" name="gameId" value="{{game.0.id}}">
+					{% if game.username == null %}
+						<button class="fond-neon-non-possede" type="submit">Non-posséder</button>
+					{% else %}
+						<button class="fond-neon-possede" type="submit">Posséder</button>
+					{% endif %}
+					{% if game.username != null %}
+						<label class="switch">
+							{% if game.showGame == false %}
+								<input class="eventCheckbox" type="checkbox">
+							{% else %}
+								<input class="eventCheckbox" type="checkbox" checked>
+							{% endif %}
+							<span class="slider round"></span>
+						</label>
 
-				{% endif %}
-			</form>
+					{% endif %}
+				</form> #}
+			</div>
 		{% endfor %}
+		</div>
 		<script src="{{asset('assets/js/ajaxGameUser.js')}}"></script>
 		<script>
 			var urlAdd = "{{ path('app_add_gameUser')|escape('js') }}";
 var urlDelete = "{{ path('app_delete_gameUser')|escape('js') }}";
 var urlUpdate = "{{ path('app_modify_gameUser') }}";
 		</script>
+</div>		
+</div>		
 	{% endblock %}

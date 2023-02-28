@@ -41,8 +41,8 @@ formAjax.forEach(function(element) {
                 .then(() => {
                     var input =this.children[1];
                     creationSwitch(input);
-                    input.className = "suppression";
-                    input.innerHTML = "Je ne possède plus ce jeu";
+                    input.className = "fond-neon-possede";
+                    input.innerHTML = "Posséder";
                 })
                 .catch(function(error) {
                     console.log('Erreur dans l\'opération fetch :' + error.message);
@@ -53,8 +53,8 @@ formAjax.forEach(function(element) {
                     var input =this.children[1];
                     var checkbox = this.children[2];
                     checkbox.remove();
-                    input.className = "ajout";
-                    input.innerHTML = "Je possède ce jeu";
+                    input.className = "fond-neon-non-possede";
+                    input.innerHTML = "Non-posséder";
                 }) 
                 .catch(function(error) {
                     console.log('Erreur dans l\'opération fetch :' + error.message);

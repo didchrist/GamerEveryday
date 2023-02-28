@@ -30,7 +30,7 @@ class UsersFixtures extends Fixture
         $game = new Game;
         $allgame = [];
         $game->setGameNum('GAME01')
-            ->setGameName('Divinity: Original Sin 2')
+            ->setGameName('Divinity Original Sin 2')
             ->setNumberOfPlayer(4)
             ->setCategory('Jeu de roles');
         $allgame[] = $game;
@@ -48,7 +48,7 @@ class UsersFixtures extends Fixture
 
         $game = new Game;
         $game->setGameNum('GAME03')
-            ->setGameName('Total War : Warhammer 3')
+            ->setGameName('Total War Warhammer 3')
             ->setNumberOfPlayer(100)
             ->setCategory('Jeu de roles');
         $allgame[] = $game;
@@ -66,7 +66,7 @@ class UsersFixtures extends Fixture
 
         $game = new Game;
         $game->setGameNum('GAME05')
-            ->setGameName('Warhammer 40 000: Darktide')
+            ->setGameName('Warhammer 40 000 Darktide')
             ->setNumberOfPlayer(4)
             ->setCategory('FPS');
         $allgame[] = $game;
