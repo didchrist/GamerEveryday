@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Register{% endblock %}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+{% block title %}S'enregistrer{% endblock %}
 
 {% block body %}
     {% for flash_error in app.flashes('verify_email_error') %}

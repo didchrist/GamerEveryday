@@ -3,10 +3,11 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/toggleSwitch.css')}}">
 	<link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
 	<link rel="stylesheet" href="{{ asset('assets/css/custoGame.css')}}">
+            {{ encore_entry_link_tags('app') }}
 {% endblock stylesheets %}
 {% block body %}
 <div class="cover-game">
-<div class="container-fluid mx-5">
+<div class="container-fluid mx-5 mb-5">
 	<div class="row center-card">
 		<h1 class="text-neon-blue text-center mt-5 pt-5">Liste de jeux</h1>
 		{% for game in games %}
@@ -44,6 +45,7 @@
 			</div>
 		{% endfor %}
 		</div>
+		<div class="space-10"></div>
 		<script src="{{asset('assets/js/ajaxGameUser.js')}}"></script>
 		<script>
 			var urlAdd = "{{ path('app_add_gameUser')|escape('js') }}";
