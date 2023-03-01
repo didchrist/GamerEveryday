@@ -63,6 +63,26 @@ class GroupRepository extends ServiceEntityRepository
 
         return $data;
     }
+    public function findAllGroupWithoutUser($user) {
+        $query2 = $this->getEntityManager()->createQueryBuilder()
+            ->select('g.id')
+            ->from('App\Entity\Group', 'g')
+            ->join('g.userGroups', 'ug')
+            ->join('ug.id_User', 'u')
+            ->andWhere("u = $user");
+
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('g')
+            ->from('App\Entity\Group', 'g');
+        $query = $query->add(
+            'where',
+            "g.id = ".
+                $query->expr()->any(
+                    $query2->getDQL()
+                )
+        );
+        
+    }
 
     //    /**
     //     * @return Group[] Returns an array of Group objects

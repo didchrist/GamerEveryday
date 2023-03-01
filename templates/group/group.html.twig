@@ -18,11 +18,12 @@
                 <h4>Rang</p>
             </div>
         </div>
-        {% for user in group.userGroups %}
+        {% for users in group.userGroups %}
         <div class="d-flex justify-content-center">
-            {{ dump(user.idUser) }}
-            {# <p>{{user.id_User.username}}</p> #}
-            <p>{{user.role}}</p>
+            {% for user in users.idUser %}
+            <p class="mx-5">{{user.username}}</p>
+            {% endfor %}
+            <p>{{users.role}}</p>
         </div>
         {% endfor %}
     </div>
