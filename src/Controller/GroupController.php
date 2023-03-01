@@ -99,9 +99,11 @@ class GroupController extends AbstractController
     }
     
     #[Route('/group/user/{id}', name: 'app_detail_group')]
-    public function detailGroup($id) 
+    public function detailGroup($id, GroupRepository $groupRepository) 
     {
-
-        return $this->render('group/group.html.twig');
+        $group = $groupRepository->findOneBy(['id' => $id]);
+        return $this->render('group/group.html.twig', [
+            'group' => $group,
+        ]);
     }
 }
