@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
-<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">  
         {% endblock %}
 {% block title %}Connexion{% endblock %}
+{% block stylesheets %}
+{{ encore_entry_link_tags('app') }}
+<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">  
+{% endblock stylesheets %}
 {% block body %}
 <div class="cover-login"></div>
 <main class="col-12 d-flex justify-content-center">

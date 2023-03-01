@@ -44,7 +44,7 @@
                         <span class="text">Jeux</span>
                     </a>
                 </li>
-                <li class="list {{ (app.request.get('_route') == 'app_group') ? 'active' : '' }}">
+                <li class="list {{ (app.request.get('_route') == 'app_group') ? 'active' : '' }}{{ (app.request.get('_route') == 'app_detail_group') ? 'active' : '' }}">
                     <a href="{{path('app_group')}}">
                         <span class="icon">
                             <i class="fa-solid fa-users"></i>

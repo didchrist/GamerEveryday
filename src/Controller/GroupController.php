@@ -22,47 +22,50 @@ class GroupController extends AbstractController
     {
         $user = $this->getUser();
 
-        $groupes = $groupRepository->findGroupById($user);
+        $groupes = $groupRepository->findAllGroupWithoutUser($user);
+        dd($groupes);
+
+        $userGroupes = $groupRepository->findGroupById($user);
         $tableau = [];
-        for ($i = 0; $i <= count($groupes)-1; $i++) {
+        for ($i = 0; $i <= count($userGroupes)-1; $i++) {
             if ($i == 0) {
-                $tableau[] = ['numGroup' => $groupes[$i]['numGroup'], 
-                'nameGroup' => $groupes[$i]['nameGroup'], 
-                'accesGroup' => $groupes[$i]['accesGroup'], 
-                'descriptionGroup' => $groupes[$i]['descriptionGroup'],
-                'id' => $groupes[$i]['id'],
+                $tableau[] = ['numGroup' => $userGroupes[$i]['numGroup'], 
+                'nameGroup' => $userGroupes[$i]['nameGroup'], 
+                'accesGroup' => $userGroupes[$i]['accesGroup'], 
+                'descriptionGroup' => $userGroupes[$i]['descriptionGroup'],
+                'id' => $userGroupes[$i]['id'],
                 'users' => [ 0 => [
-                        'role' => $groupes[$i]['role'],
-                        'username' => $groupes[$i]['username']
+                        'role' => $userGroupes[$i]['role'],
+                        'username' => $userGroupes[$i]['username']
                         ]
                     ]
                 ];
-            } elseif ($groupes[$i-1]['numGroup'] != $groupes[$i]['numGroup']) {
-                $tableau[] = ['numGroup' => $groupes[$i]['numGroup'], 
-                'nameGroup' => $groupes[$i]['nameGroup'], 
-                'accesGroup' => $groupes[$i]['accesGroup'], 
-                'descriptionGroup' => $groupes[$i]['descriptionGroup'],
-                'id' => $groupes[$i]['id'],
+            } elseif ($userGroupes[$i-1]['numGroup'] != $userGroupes[$i]['numGroup']) {
+                $tableau[] = ['numGroup' => $userGroupes[$i]['numGroup'], 
+                'nameGroup' => $userGroupes[$i]['nameGroup'], 
+                'accesGroup' => $userGroupes[$i]['accesGroup'], 
+                'descriptionGroup' => $userGroupes[$i]['descriptionGroup'],
+                'id' => $userGroupes[$i]['id'],
                 'users' => [ 0 => [
-                        'role' => $groupes[$i]['role'],
-                        'username' => $groupes[$i]['username']
+                        'role' => $userGroupes[$i]['role'],
+                        'username' => $userGroupes[$i]['username']
                         ]
                     ]
                 ];
             } else {
                 $key = array_key_last($tableau);
                 $tableau[$key]['users'][] =  [
-                    'role' => $groupes[$i]['role'],
-                    'username' => $groupes[$i]['username']
+                    'role' => $userGroupes[$i]['role'],
+                    'username' => $userGroupes[$i]['username']
                 ];
             }
         }
-        $groupes = $tableau;
+        $userGroupes = $tableau;
         $group = new Group();
         $form = $this->createForm(GroupType::class, $group);
         
         return $this->render('group/index.html.twig', [
-            'groupes' => $groupes,
+            'userGroupes' => $userGroupes,
             'groupForm' => $form->createView(),
         ]);
     }
@@ -99,9 +102,11 @@ class GroupController extends AbstractController
     }
     
     #[Route('/group/user/{id}', name: 'app_detail_group')]
-    public function detailGroup($id) 
+    public function detailGroup($id, GroupRepository $groupRepository) 
     {
-
-        return $this->render('group/group.html.twig');
+        $group = $groupRepository->findOneBy(['id' => $id]);
+        return $this->render('group/group.html.twig', [
+            'group' => $group,
+        ]);
     }
 }
