@@ -102,15 +102,34 @@ class GroupController extends AbstractController
     }
     
     #[Route('/group/user/{id}', name: 'app_detail_group')]
-    public function detailGroup($id, GroupRepository $groupRepository) 
+    public function detailGroup($id, GroupRepository $groupRepository): Response
     {
         $group = $groupRepository->findOneBy(['id' => $id]);
         $user = $this->getUser();
         $userRight = $groupRepository->findUserWithGroup($user, $id); 
-        //dd($userRight);
         return $this->render('group/group.html.twig', [
             'group' => $group,
             'userRight' => $userRight,
         ]);
+    }
+    #[Route('/group/user/add/invite', name: 'app_add_detail_group')]
+    public function ajaxAddUserToGroup (Request $request, UserGroupRepository $userGroupRepository, GroupRepository $groupRepository) : Response
+    {
+        $user = $this->getUser();
+
+        $data = json_decode($request->getContent(), true);
+
+        $idGroup = $data['id'];
+        $group = $groupRepository->findOneBy(['id' => $idGroup]);
+
+        $userInGroup = new UserGroup();
+
+        $userInGroup->setRole('En attente')
+            ->addIdUser($user)
+            ->addIdGroup($group);
+        
+        $userGroupRepository->save($userInGroup, true);
+
+        return new Response('Demande ajouté');
     }
 }

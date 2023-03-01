@@ -3,47 +3,47 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 {% block body %}
-<div class="cover-group">
-	<div class="d-flex col-12 flex-column align-items-center">
-		<h1 class="text-neon-blue">Gestionnaire de groupe</h1>
-		<h2>Groupe que vous pouvez rejoindre : </h2>
-		{% if groupes %}
-		{% for group in groupes %}
-		<div class="d-flex">
-			<p>{{ group.nameGroup }}</p>
-			{% for users in group.userGroups %}
-			{% for user in users.idUser %}
-			<p>{{ user.username}}</p>
-			{% endfor %}
-			<p>{{ users.role}}</p>
-			{% endfor %}
-			<a href="{{ path('app_detail_group', { 'id': group.id})}}" class="p-2 rounded mx-5">Détails</a>
-		</div>	
+<div class="cover-group"></div>
+<div class="d-flex col-12 flex-column align-items-center">
+	<h1 class="text-neon-blue">Gestionnaire de groupe</h1>
+	<h2>Groupe que vous pouvez rejoindre : </h2>
+	{% if groupes %}
+	{% for group in groupes %}
+	<div class="d-flex">
+		<p>{{ group.nameGroup }}</p>
+		{% for users in group.userGroups %}
+		{% for user in users.idUser %}
+		<p>{{ user.username}}</p>
+		{% endfor %}
+		<p>{{ users.role}}</p>
+		{% endfor %}
+		<a href="{{ path('app_detail_group', { 'id': group.id})}}" class="p-2 rounded mx-5">Détails</a>
+	</div>	
+	{% endfor %}
+	{% else %}
+	<p>Il n'y a aucun groupe disponible pour le moment.</p>
+	{% endif %}
+	<h2 id="listUserGroup">Votre liste de groupes</h2>
+	{% if userGroupes %}
+		{% for groupe in userGroupes %}
+			<div class="d-flex m-3 groupe">
+				<h2>{{ groupe.nameGroup}}</h2>
+				{% for user in groupe.users %}
+				<p>{{ user.username}}</p>
+				<p>{{ user.role}}</p>
+				{% endfor %}
+				<a href="{{ path('app_detail_group', { 'id': groupe.id})}}" class="p-2 rounded mx-5">Détails</a>
+			</div>
 		{% endfor %}
 		{% else %}
-		<p>Il n'y a aucun groupe disponible pour le moment.</p>
-		{% endif %}
-		<h2 id="listUserGroup">Votre liste de groupes</h2>
-		{% if userGroupes %}
-			{% for groupe in userGroupes %}
-				<div class="d-flex m-3 groupe">
-					<h2>{{ groupe.nameGroup}}</h2>
-					{% for user in groupe.users %}
-					<p>{{ user.username}}</p>
-					<p>{{ user.role}}</p>
-					{% endfor %}
-					<a href="{{ path('app_detail_group', { 'id': groupe.id})}}" class="p-2 rounded mx-5">Détails</a>
-				</div>
-			{% endfor %}
-			{% else %}
-			<p id="nothing">Vous n'avez aucune appartenance a aucun groupe.</p>
-		{% endif %}
-		<h2>Créer votre groupe</h2>
-		{{ form_start(groupForm) }}
-		<button id="ajaxAdd" type="submit">Valider</button>
-		{{ form_end(groupForm) }}
-	</div>
+		<p id="nothing">Vous n'avez aucune appartenance a aucun groupe.</p>
+	{% endif %}
+	<h2>Créer votre groupe</h2>
+	{{ form_start(groupForm) }}
+	<button id="ajaxAdd" type="submit">Valider</button>
+	{{ form_end(groupForm) }}
 </div>
+
 	<script src="{{ asset('assets/js/ajaxGroup.js')}}"></script>
 	<script>
 		var urlAddGroup = "{{ path('app_add_group')| escape('js')}}";
