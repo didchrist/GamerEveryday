@@ -45,13 +45,15 @@ class GroupRepository extends ServiceEntityRepository
             ->from('App\Entity\Group', 'g')
             ->join('g.userGroups', 'ug')
             ->join('ug.id_User', 'u')
-            ->andWhere("u = $user");
+            ->andWhere("u = $user")
+            ->orderBy('g.id', 'ASC');
 
         $query = $this->getEntityManager()->createQueryBuilder()
             ->select('g1.numGroup', 'g1.nameGroup', 'g1.accesGroup', 'g1.descriptionGroup', 'g1.id', 'ug1.role', 'u1.username')
             ->from('App\Entity\Group', 'g1')
             ->join('g1.userGroups', 'ug1')
-            ->join('ug1.id_User', 'u1');
+            ->join('ug1.id_User', 'u1')
+            ->orderBy('g1.id', 'ASC');
         $query = $query->add(
             'where',
             'g1.id = ' .
@@ -72,16 +74,27 @@ class GroupRepository extends ServiceEntityRepository
             ->andWhere("u = $user");
 
         $query = $this->getEntityManager()->createQueryBuilder()
-            ->select('g')
-            ->from('App\Entity\Group', 'g');
-        $query = $query->add(
-            'where',
-            "g.id = ".
-                $query->expr()->any(
-                    $query2->getDQL()
-                )
-        );
-        
+            ->select('g1')
+            ->from('App\Entity\Group', 'g1')
+            ->where('g1.id NOT IN ('.$query2->getDQL().')')
+            ->andWhere("g1.accesGroup = true")
+        ;
+        $data = $query->getQuery()->getResult();
+
+        return $data;
+    }
+    public function findUserWithGroup($user, $id)
+    {
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('u.username', 'ug.role')
+            ->from('App\Entity\Group', 'g')
+            ->join('g.userGroups', 'ug')
+            ->join('ug.id_User', 'u')
+            ->Where("u = $user")
+            ->andWhere("g.id = $id");
+        $data = $query->getQuery()->getOneOrNullResult();
+
+        return $data;
     }
 
     //    /**

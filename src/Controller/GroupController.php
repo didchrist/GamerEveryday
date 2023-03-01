@@ -23,7 +23,6 @@ class GroupController extends AbstractController
         $user = $this->getUser();
 
         $groupes = $groupRepository->findAllGroupWithoutUser($user);
-        dd($groupes);
 
         $userGroupes = $groupRepository->findGroupById($user);
         $tableau = [];
@@ -67,6 +66,7 @@ class GroupController extends AbstractController
         return $this->render('group/index.html.twig', [
             'userGroupes' => $userGroupes,
             'groupForm' => $form->createView(),
+            'groupes' => $groupes,
         ]);
     }
     #[Route('/group/user/add', name: 'app_add_group')]
@@ -105,8 +105,12 @@ class GroupController extends AbstractController
     public function detailGroup($id, GroupRepository $groupRepository) 
     {
         $group = $groupRepository->findOneBy(['id' => $id]);
+        $user = $this->getUser();
+        $userRight = $groupRepository->findUserWithGroup($user, $id); 
+        //dd($userRight);
         return $this->render('group/group.html.twig', [
             'group' => $group,
+            'userRight' => $userRight,
         ]);
     }
 }

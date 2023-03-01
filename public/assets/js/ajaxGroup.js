@@ -22,16 +22,27 @@ document.getElementById('ajaxAdd').addEventListener('click', function (e) {
                 pUsername.innerHTML = data.username;
                 pRole.innerHTML = data.role;
 
+                if (document.getElementById('nothing')) {
+                    document.getElementById('nothing').remove();
+                    var listUserGroup = document.getElementById('listUserGroup');
 
-                var groupe = document.querySelectorAll('.groupe');
-
-                var lastGroupe = groupe[groupe.length-1];
-
-                lastGroupe.insertAdjacentElement('afterend', div);
-                div.appendChild(h2);
-                div.appendChild(pUsername);
-                div.appendChild(pRole);
-                div.appendChild(button);
+                    listUserGroup.insertAdjacentElement('afterend', div);
+                    div.appendChild(h2);
+                    div.appendChild(pUsername);
+                    div.appendChild(pRole);
+                    div.appendChild(button);
+                    
+                } else {
+                    var groupe = document.querySelectorAll('.groupe');
+    
+                    var lastGroupe = groupe[groupe.length-1];
+    
+                    lastGroupe.insertAdjacentElement('afterend', div);
+                    div.appendChild(h2);
+                    div.appendChild(pUsername);
+                    div.appendChild(pRole);
+                    div.appendChild(button);
+                }
 
             })
         .catch(function (error) {
