@@ -1,47 +1,53 @@
 {% extends 'base.html.twig' %}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('app') }}
+{% endblock %}
 {% block body %}
-<div class="d-flex flex-column m-5">
-    <h1 class="m-5 text-center js-group-id" data-group="{{ group.id}}">{{ group.nameGroup}}</h1>
-    <div class=" d-flex justify-content-center m-5">
-        {% if userRight == null %}
-        <a href="" id="ajaxAddUserInGroup">Rejoindre</a>
-        {% elseif userRight.role == 'Createur' %}            
-        <a href="">Dissoudre</a>
-        {% elseif userRight.role == 'Membre' %}
-        <a href="">Quitter</a>
-        {% endif %}
-    </div>
-    {% if group.accesGroup == 1 %}
-    <p>Groupe public, accesible a tous sans confirmation de demande par le créateur du groupe.</p>
-    {% else %}
-    <p>Groupe privé, le créateur de groupe doit confirmer les demandes en attente d'integration du groupe.</p>    
-    {% endif %}
-    <p>{{ group.descriptionGroup }}</p>
-    <div>
-        <div class="d-flex justify-content-center">
-            <h4 class="mx-5">Membres</h3>
-            <div>
-                <h4>Rang</p>
-            </div>
-        </div>
-        {% for users in group.userGroups %}
-        <div class="d-flex justify-content-center">
-            {% for user in users.idUser %}
-            <p class="mx-5">{{user.username}}</p>
-            {% endfor %}
-            <p>{{users.role}}</p>
-        </div>
-        {% endfor %}
-    </div>
-    <div>
-
-    </div>
-</div>
-<script src="{{ asset('assets/js/ajaxDetailGroup.js')}}"></script>
-<script>
-    var urlAjaxAddUserInGroup = "{{ path('app_add_detail_group')| escape('js')}}"
-</script>
+	<div class="d-flex flex-column m-5">
+		<h1 class="m-5 text-center js-group-id" data-group="{{ group.id}}">{{ group.nameGroup}}</h1>
+		<div class=" d-flex justify-content-center m-5">
+			{% if userRight == null %}
+				<a href="" id="ajaxAddUserInGroup">Rejoindre</a>
+			{% elseif userRight.role == 'Createur' %}
+				<a href="{{ path('app_delete_group', {'id':group.id})}}">Dissoudre</a>
+			{% elseif userRight.role == 'Membre' %}
+				<a href="">Quitter</a>
+			{% elseif userRight.role == 'En attente'%}
+				<a href="" id="ajaxAddUserInGroup">Annuler la demande</a>
+			{% endif %}
+		</div>
+		{% if group.accesGroup == 1 %}
+			<p>Groupe public, accesible a tous sans confirmation de demande par le créateur du groupe.</p>
+		{% else %}
+			<p>Groupe privé, le créateur de groupe doit confirmer les demandes en attente d'integration du groupe.</p>
+		{% endif %}
+		<p>{{ group.descriptionGroup }}</p>
+		<div>
+			<div class="d-flex justify-content-center">
+				<h4 class="mx-5">Membres</h3>
+				<div>
+					<h4>Rang</p>
+				</div>
+			</div>
+			{% for users in group.userGroups %}
+				<div class="d-flex justify-content-center user">
+					{% for user in users.idUser %}
+						<p class="mx-5">{{user.username}}</p>
+						<p>{{users.role}}</p>
+						{% if (users.role == 'En attente') and (userRight.role == 'Createur') %}
+							<a class="confirm" href="">Accepter</a>
+							<a class="reject" href="">Refuser</a>
+						{% endif %}
+					{% endfor %}
+				</div>
+			{% endfor %}
+		</div>
+		<div></div>
+	</div>
+	<script src="{{ asset('assets/js/ajaxDetailGroup.js')}}"></script>
+	<script>
+		var urlAjaxAddUserInGroup = "{{ path('app_add_detail_group')| escape('js') }}";
+var urlAjaxDeleteUserInGroup = "{{ path('app_delete_detail_group')|escape('js') }}";
+var urlAjaxConfirmAddUser = "{{ path('app_confirm_add_group')| escape('js') }}";
+	</script>
 {% endblock body %}
