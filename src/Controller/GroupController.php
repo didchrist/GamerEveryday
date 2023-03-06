@@ -82,7 +82,7 @@ class GroupController extends AbstractController
 
         $group = $request->get('group');
         $nameGroup = $group['nameGroup'];
-        $accesGroup = $group['accesGroup'];
+        $accesGroup = $group['accesGroup'] ?? 0;
         $descriptionGroup = $group['descriptionGroup'];
 
         $group = new Group();
@@ -102,7 +102,7 @@ class GroupController extends AbstractController
             ->addIdUser($user)
             ->setRole('Createur');
         $userGroupRepository->save($userGroup, true);
-        $data = ['nameGroup' => $nameGroup, 'username' => $user->getUsername(), 'role' => 'Createur', 'id' => $lastGroup[0]->getId() + 1];
+        $data = ['nameGroup' => $nameGroup, 'username' => $user->getUsername(), 'role' => 'Createur', 'id' => ($lastGroup[0]->getId() + 1) ?? 1];
 
         return new JsonResponse($data);
     }

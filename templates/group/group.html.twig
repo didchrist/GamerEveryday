@@ -34,7 +34,7 @@
 					{% for user in users.idUser %}
 						<p class="mx-5">{{user.username}}</p>
 						<p>{{users.role}}</p>
-						{% if (users.role == 'En attente') and (userRight.role == 'Createur') %}
+						{% if (users.role == 'En attente') and ((userRight.role | default('Visiteur')) == 'Createur') %}
 							<a class="confirm" href="">Accepter</a>
 							<a class="reject" href="">Refuser</a>
 						{% endif %}
