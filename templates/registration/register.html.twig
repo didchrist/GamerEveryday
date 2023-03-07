@@ -5,6 +5,9 @@
 {% block title %}S'enregistrer{% endblock %}
 
 {% block body %}
+<ul class="cover">
+            <li class="cover-register"></li>
+</ul>
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
