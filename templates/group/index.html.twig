@@ -6,44 +6,104 @@
 	<ul class="cover">
             <li class="cover-group"></li>
 </ul>
-	<div class="d-flex col-12 flex-column align-items-center">
-		<h1 class="text-neon-blue">Gestionnaire de groupe</h1>
-		<h2>Groupe que vous pouvez rejoindre :
-		</h2>
+	<div class="d-flex col-12 flex-column align-items-center mt-5">
+		<h1 class="text-neon-blue mt-4">Gestionnaire de groupe</h1>
+		<h2 class="text-neon-pink mb-3">Groupe que vous pouvez rejoindre :</h2>
 		{% if groupes %}
-			{% for group in groupes %}
-				<div class="d-flex">
-					<p>{{ group.nameGroup }}</p>
+		<table class="groupes">
+				<thead>
+				<tr>
+				<th class="p-2">Nom</th>
+				<th class="p-2">Pseudo</th>
+				<th class="p-2">Rôle</th>
+				<th class="p-2">Option</th>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+				<td colspan="4">
+				<div class="links"><a href="#">&larr;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&rarr;</a></div>
+				</td>
+				</tr>
+				</tfoot>
+				<tbody>
+				{% for group in groupes %}
+				<tr>
+					<td class="p-2">{{ group.nameGroup }}</td>
 					{% for users in group.userGroups %}
-						{% for user in users.idUser %}
-							<p>{{ user.username}}</p>
-						{% endfor %}
-						<p>{{ users.role}}</p>
+						{% if users.role == 'Createur' %}
+							{% for user in users.idUser %}
+								<td class="p-2">{{ user.username}}</td>
+							{% endfor %}
+							<td class="p-2">{{ users.role}}</td>
+						{% endif %}   
 					{% endfor %}
-					<a href="{{ path('app_detail_group', { 'id': group.id})}}" class="p-2 rounded mx-5">Détails</a>
-				</div>
+					<td>
+						<a href="{{ path('app_detail_group', { 'id': group.id})}}" class="p-2 rounded mx-2">Détails</a>
+					</td>
+				</tr>
+				
 			{% endfor %}
+				</tbody>
+		</table>	
 		{% else %}
 			<p>Il n'y a aucun groupe disponible pour le moment.</p>
 		{% endif %}
-		<h2 id="listUserGroup">Votre liste de groupes</h2>
-		{% if userGroupes %}
-			{% for groupe in userGroupes %}
-				<div class="d-flex m-3 groupe">
-					<h2>{{ groupe.nameGroup}}</h2>
-					{% for user in groupe.users %}
-						<p>{{ user.username}}</p>
-						<p>{{ user.role}}</p>
+		<h2 id="listUserGroup" class="text-neon-pink mt-5 mb-3">Votre liste de groupes</h2>
+		<table class="groupes">
+			{% if userGroupes %}
+				<thead>
+				<tr>
+				<th class="p-2">Nom</th>
+				<th class="p-2">Pseudo</th>
+				<th class="p-2">Rôle</th>
+				<th class="p-2">Option</th>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+				<td colspan="4">
+				<div class="links"><a href="#">&larr;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&rarr;</a></div>
+				</td>
+				</tr>
+				</tfoot>
+				<tbody>
+				{% for groupe in userGroupes %}
+				<tr class="groupe">
+					<td class="p-2">{{ groupe.nameGroup }}</td>
+					{% for user in groupe.users  %}
+						{% if user.role == 'Createur' %}
+						<td class="p-2">{{ user.username}}</td>
+						<td class="p-2">{{ user.role}}</td>
+						{% endif %}   
 					{% endfor %}
-					<a href="{{ path('app_detail_group', { 'id': groupe.id})}}" class="p-2 rounded mx-5">Détails</a>
-				</div>
+					<td>
+						<a href="{{ path('app_detail_group', { 'id': groupe.id})}}" class="p-2 rounded mx-2">Détails</a>
+					</td>
+				</tr>
+				
 			{% endfor %}
-		{% else %}
-			<p id="nothing">Vous n'avez aucune appartenance a aucun groupe.</p>
-		{% endif %}
-		<h2>Créer votre groupe</h2>
+				</tbody>
+				{% else %}
+				<p id="nothing">Vous n'avez aucune appartenance a aucun groupe.</p>
+				{% endif %}
+			</table>
+		<h2 class="text-neon-pink mt-5 mb-3">Créer votre groupe</h2>
 		{{ form_start(groupForm) }}
-		<button id="ajaxAdd" type="submit">Valider</button>
+		<div class="row">
+			<div class="d-flex justify-content-between">
+				{{ form_row(groupForm.nameGroup)}}
+			</div>
+			<div class="d-flex justify-content-between">
+				{{ form_row(groupForm.descriptionGroup)}}
+			</div>
+			<div class="d-flex justify-content-between">
+				{{ form_row(groupForm.accesGroup)}}
+			</div>
+		</div>
+		<button id="ajaxAdd" type="submit">
+            <a class="text-center my-5 btn" style="--clr:var(--primary-light)" name="valider"><span>Valider</span><i></i></a>
+        </button>
 		{{ form_end(groupForm) }}
 	</div>
 

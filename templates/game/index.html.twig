@@ -8,12 +8,12 @@
 <ul class="cover">
             <li class="cover-game"></li>
 </ul>
-<div class="container-fluid mx-5">
+<div class="container-fluid m-5 pt-1">
 	<div class="row center-card">
-		<h1 class="text-neon-blue text-center mt-5 pb-5">Liste de jeux</h1>
+		<h1 class="text-neon-blue text-center mt-5 mb-1">Liste de jeux</h1>
 		{% for game in games %}
 		{# {{ dump(games) }} #}
-		<div class="col-lg-2 col-md-4 col-sm-12 mt-3 mx-2">
+		<div class="col-lg-2 col-md-4 col-sm-12 mt-2 mx-2">
 				<img class="icon-game" src="{{ asset('assets/img/icone/'~game.0.gameName~'.svg')}}">
 				<p class="text-neon-pink">{{game.0.gameName}}</p>
 				{# {% if game.0.numberOfPlayer < 100 %}

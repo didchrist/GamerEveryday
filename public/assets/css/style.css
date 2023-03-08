@@ -1,4 +1,4 @@
-/*----------------Charte graphiaue ----------------------*/
+/*----------------Charte graphique ----------------------*/
 /*           Night: #0c0c0c                              */
 /*           Rich black: #051c24                         */
 /*           Indigo dye: #003c57                         */
@@ -26,8 +26,6 @@
     --background-dark: #051c24;
     --text-color: #051c24;
     --text-color-light: #fafafa;
-    --box-shadow: rgba(60 64 67 0.3) 0 1px 2px 0,
-      rgba(60 64 67 0.15) 0 2px 6px 2px;
     --border: 1px solid #fafafa;
     --icon-size: 60px;
   }
@@ -52,8 +50,6 @@
     p{font-size: 16px !important;}
     h1{font-size: 80px !important;}
     h2{font-size: 30px !important;}
-    .cover-game{min-height: 830px !important;}
-    .cover-group{min-height: 830px !important;}
     }
     /* Extra large devices (large laptops and desktops, 1200px and down) */
     @media screen and (max-width: 1200px) {
@@ -61,8 +57,6 @@
     p{font-size: 15px !important;}
     h1{font-size: 75px !important;}
     h2{font-size: 27px !important;}
-    .cover-game{min-height: 840px !important;}
-    .cover-group{min-height: 840px !important;}
     }
   
   /* Large devices (laptops/desktops, 992px and down) */
@@ -72,8 +66,6 @@
     h1{font-size: 70px !important;}
     h2{font-size: 24px !important;}
     .logo-div{display: none !important;}
-    .cover-group{min-height: 840px !important;}
-    .cover-game{min-height: 1390px !important;}
     label{font-size:15px !important;}
 
   }
@@ -85,8 +77,6 @@
     h1{font-size: 65px !important;}
     h2{font-size: 21px !important;}
     .logo-div{display: none !important;}
-    .cover-group{min-height: 840px !important;}
-    .cover-game{min-height: 2475px !important;}
   }
   
   /* Small devices (portrait tablets and large phones, 600px and down) */
@@ -106,7 +96,6 @@
     min-height: 100vh;
     background: transparent !important;
     color:var(--text-color-light);
-    margin-bottom:60px;
     overflow-x: hidden;
 
   }
@@ -322,7 +311,7 @@
     border-radius: 50%;
     /* border: 5px var(--background-dark) ridge; */
     border: 6px var(--background-light) solid;
-    box-shadow: 5px 5px 10px var(--primary);
+    box-shadow: 0 5px 10px var(--primary);
     transition: 0.5s;
   }
   
@@ -726,6 +715,55 @@
   z-index: -1;
 }
 
-.space-10{
-  width:10%;
+table.groupes {
+  background-color: #051C24;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.groupes td, table.groupes th {
+  border: 1px solid #BABABA;
+}
+table.groupes tbody td {
+  font-size: 13px;
+  color: #FAFAFA;
+}
+table.groupes thead {
+  background: #0594D0;
+  background: -moz-linear-gradient(top, #43afdc 0%, #1e9ed4 66%, #0594D0 100%);
+  background: -webkit-linear-gradient(top, #43afdc 0%, #1e9ed4 66%, #0594D0 100%);
+  background: linear-gradient(to bottom, #43afdc 0%, #1e9ed4 66%, #0594D0 100%);
+}
+table.groupes thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+table.groupes thead th:first-child {
+  border-left: none;
+}
+
+table.groupes tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FAFAFA;
+  background: #04BBFF;
+  background: -moz-linear-gradient(top, #43ccff 0%, #1dc1ff 66%, #04BBFF 100%);
+  background: -webkit-linear-gradient(top, #43ccff 0%, #1dc1ff 66%, #04BBFF 100%);
+  background: linear-gradient(to bottom, #43ccff 0%, #1dc1ff 66%, #04BBFF 100%);
+  border-top: 2px solid #051C24;
+}
+table.groupes tfoot td {
+  font-size: 14px;
+}
+table.groupes tfoot .links {
+  text-align: right;
+}
+table.groupes tfoot .links a{
+  display: inline-block;
+  background: #0594D0;
+  color: #FAFAFA;
+  padding: 2px 8px;
+  border-radius: 5px;
 }
