@@ -5,9 +5,10 @@
 {% block title %}S'enregistrer{% endblock %}
 
 {% block body %}
-<ul class="cover">
+{# <ul class="cover">
             <li class="cover-register"></li>
-</ul>
+</ul> #}
+<div class="block-page cover-register d-flex flex-column justify-content-center align-items-center">
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
@@ -27,4 +28,5 @@
             <a class="text-center my-5 btn" style="--clr:var(--primary-light)" name="valider"><span>S'inscrire</span><i></i></a>
         </button>
     {{ form_end(registrationForm) }}
+</div>
 {% endblock %}

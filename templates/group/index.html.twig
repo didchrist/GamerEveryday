@@ -3,12 +3,13 @@
 	{{ encore_entry_link_tags('app') }}
 {% endblock %}
 {% block body %}
-	<ul class="cover">
+	{# <ul class="cover">
             <li class="cover-group"></li>
-</ul>
-	<div class="d-flex col-12 flex-column align-items-center mt-5">
-		<h1 class="text-neon-blue mt-4">Gestionnaire de groupe</h1>
-		<h2 class="text-neon-pink mb-3">Groupe que vous pouvez rejoindre :</h2>
+</ul> #}
+	<div class="d-flex cover-group block-page col-12 flex-column align-items-center">
+		<h1 class="text-neon-blue">Gestionnaire de groupe</h1>
+		<h2>Groupe que vous pouvez rejoindre :
+		</h2>
 		{% if groupes %}
 		<table class="groupes">
 				<thead>

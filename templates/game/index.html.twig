@@ -1,22 +1,22 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('assets/css/toggleSwitch.css')}}">
-	<link rel="stylesheet" href="{{ asset('assets/css/custoGame.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/windowGame.css')}}">
             {{ encore_entry_link_tags('app') }}
 {% endblock stylesheets %}
 {% block body %}
-<ul class="cover">
+{# <ul class="cover">
             <li class="cover-game"></li>
-</ul>
-<div class="container-fluid m-5 pt-1">
+</ul> #}
+<div class="container-fluid block-page cover-game">
 	<div class="row center-card">
 		<h1 class="text-neon-blue text-center mt-5 mb-1">Liste de jeux</h1>
 		{% for game in games %}
-		{# {{ dump(games) }} #}
-		<div class="col-lg-2 col-md-4 col-sm-12 mt-2 mx-2">
-				<img class="icon-game" src="{{ asset('assets/img/icone/'~game.0.gameName~'.svg')}}">
-				<p class="text-neon-pink">{{game.0.gameName}}</p>
-				{# {% if game.0.numberOfPlayer < 100 %}
+		<a class="col-lg-1 d-flex flex-column justify-content-center align-items-center col-md-4 col-sm-12 p-2 click-icone" href="">
+			<img class="icon-game" src="{{ asset('assets/img/icone/'~game.0.gameName~'.svg')}}">
+			<p class="text-neon-pink">{{game.0.gameName}}</p>
+			<div class="window">
+				{% if game.0.numberOfPlayer < 100 %}
 					<p class="text-light">nombre de joueur max :
 						{{game.0.numberOfPlayer}}</p>
 				{% else %}
@@ -42,11 +42,14 @@
 						</label>
 
 					{% endif %}
-				</form> #}
+				</form>
 			</div>
+
+		</a>
 		{% endfor %}
 		</div>
 		<div class="space-10"></div>
+		<script src="{{ asset('assets/js/gameWindow.js')}}"></script>
 		<script src="{{asset('assets/js/ajaxGameUser.js')}}"></script>
 		<script>
 			var urlAdd = "{{ path('app_add_gameUser')|escape('js') }}";

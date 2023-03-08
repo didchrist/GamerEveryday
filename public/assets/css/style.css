@@ -90,14 +90,9 @@
 
   
   body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     background: transparent !important;
     color:var(--text-color-light);
     overflow-x: hidden;
-
   }
 
   .text-light{
@@ -166,10 +161,6 @@
     width: 50px;
     height: auto;
     object-fit: cover;
-  }
-  
-  table {
-    width: auto !important;
   }
   
   .right {
@@ -625,13 +616,9 @@
   background-position: center center;
   background-attachment: fixed;
   background-size:cover;
-  position:absolute;
-  top: 0;
-  left: 0;
   height: auto;
   min-height: 100%;
   width: 100%;
-  z-index: -1;
 }
 
 .cover-group {
@@ -640,15 +627,6 @@
   background-position: center center;
   background-attachment: fixed;
   background-size:cover;
-  position:absolute;
-  filter:blur(2px);
-  top: 0;
-  left: 0;
-  height: auto;
-  min-height: 100%;
-  width: auto;
-  min-width: 100%;
-  z-index: -1;
 }
 
 .cover-availability {
@@ -657,14 +635,6 @@
   background-position: center center;
   background-attachment: fixed;
   background-size:cover;
-  position:absolute;
-  top: 0;
-  left: 0;
-  height: auto;
-  min-height: 100%;
-  width: auto;
-  min-width: 100%;
-  z-index: -1;
 }
 
 .cover-profile {
@@ -673,14 +643,6 @@
   background-position: center center;
   background-attachment: fixed;
   background-size:cover;
-  position:absolute;
-  top: 0;
-  left: 0;
-  height: auto;
-  min-height: 100%;
-  width: auto;
-  min-width: 100%;
-  z-index: -1;
 }
 
 .cover-register {
@@ -689,14 +651,6 @@
   background-position: center center;
   background-attachment: fixed;
   background-size:cover;
-  position:absolute;
-  top: 0;
-  left: 0;
-  height: auto;
-  min-height: 100%;
-  width: auto;
-  min-width: 100%;
-  z-index: -1;
 }
 
 .cover-login {
@@ -705,14 +659,6 @@
   background-position: center center;
   background-attachment: fixed;
   background-size:cover;
-  position:absolute;
-  top: 0;
-  left: 0;
-  height: auto;
-  min-height: 100%;
-  width: auto;
-  min-width: 100%;
-  z-index: -1;
 }
 
 table.groupes {
@@ -766,4 +712,17 @@ table.groupes tfoot .links a{
   color: #FAFAFA;
   padding: 2px 8px;
   border-radius: 5px;
+}
+.space-10{
+  width:10%;
+}
+
+.block-page {
+  padding-top: 120px;
+  padding-bottom: 60px;
+  width: 100%;
+}
+
+.block-base {
+  min-height: 100vh;
 }

@@ -1,0 +1,18 @@
+.click-icone {
+    margin: 10px;
+}
+.click-icone:hover {
+    cursor: default;
+    background-color: rgba(255, 255, 255, 0.289);
+    outline: 1px solid rgba(255, 255, 255, 0.481);
+}
+.window {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    width: 50%;
+    height: 60%;
+    background-color: black;
+    border: rgba(24, 24, 24, 0.511);
+}
