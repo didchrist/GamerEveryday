@@ -1,0 +1,186 @@
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/css/portfolio/style.css')}}">
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+{% endblock %}
+{% block title %}Portfolio de Ali{% endblock %}
+
+{% block body %}
+<header class="l-header">
+    <nav class="nav bg-grid">
+        <div>
+            <a href="#" class="nav_logo">Ali</a>
+        </div>
+        <div class="nav_menu" id="nav-menu">
+            <ul class="nav_list">
+                <li class="nav_item"><a href="#home" class="nav_link active">Home</a></li>
+                <li class="nav_item"><a href="#about" class="nav_link">About</a></li>
+                <li class="nav_item"><a href="#softskill" class="nav_link">Soft Skill</a></li>
+                <li class="nav_item"><a href="#skills" class="nav_link">Skills</a></li>
+                <li class="nav_item"><a href="#work" class="nav_link">Work</a></li>
+                <li class="nav_item"><a href="#contact" class="nav_link">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nav_toggle" id="nav-toggle">
+            <i class='bx bx-menu'></i>
+        </div>
+    </nav>
+</header>
+
+    <!--HOME-->
+    <main class="l-main">
+    <section class="home bd-grid" id="home">
+        <div class="home_data">
+            <h1 class="home_title">Hi, <br> I'm <span class="home_title-color">Ali</span><br>Web Developper</h1>
+           <!-- <a href="#" class="button">Contact</a>-->
+        </div>
+        <div class="home_img">
+            <img  class="imagetitre" src="{{ asset('assets/img/portfolio/Ali.jpg')}}" alt="Ali Akermi">
+        </div>
+        <div class="home_social">
+            <a href="#" class="home_social-icon"><i class='bx bxl-linkedin' ></i></a>
+            <a href="#" class="home_social-icon"><i class='bx bxl-behance' ></i></a>
+            <a href="#" class="home_social-icon"><i class='bx bxl-github' ></i></a>
+        </div>
+    </section>
+    <!--ABOUT-->
+    <section class="about section" id="about">
+        <h2 class="section-title">About</h2>
+        <div class="about_container bd-grid">
+            <div class="about_img">
+                <img src="{{ asset('assets/img/portfolio/ordinateur.jpg')}}">
+            </div>
+            <div>
+                
+                <p class="about_text"><h1 class="nom">Ali Akermi<br>Développeur Web Full Stack</h1><br><div class="texteapropos">
+                    Après plusieurs années d'études,formations et quelques expériences professionnelles dans les réseaux informatiques, j'ai décidé de me diriger vers un domaine pour lequel je me suis découvert une passion, la programmation.
+                    J'ai suivi une formation à l'<strong>AFPA</strong>, centre de formation en France, qui m'a permis d'apprendre les différents languages du web et leur utilisation à travers différents cas pratiques.
+            </div><br><br><br><br>
+                </p>
+            </div>
+        </div>
+    </section>
+    <!--SKILLS-->
+    <section class="skills section" id="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills_container bd-grid">
+            <div>
+                <h2 class="skills_subtitle">Skills Pro</h2>
+                <p class="skills_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id hendrerit massa, accumsan rutrum nibh. Duis sagittis dictum nisl, quis vehicula felis.</p>
+                <div class="skills_data">
+                    <div class="skills_name">
+                        <i class='bx bxl-html5 skills_icon'></i>
+                        <span class="skills_name">HTML5</span>
+                    </div>
+                    <div>
+                        <span class="skills_percentage">90%</span>
+                    </div>
+                    <div class="skills_bar skills_html"></div>
+                </div>
+
+                <div class="skills_data">
+                    <div class="skills_name">
+                        <i class='bx bxl-css3 skills_icon'></i>
+                        <span class="skills_name">CSS3</span>
+                    </div>
+                    <div>
+                        <span class="skills_percentage">90%</span>
+                    </div>
+                    <div class="skills_bar skills_css"></div>
+                </div>
+
+                <div class="skills_data">
+                    <div class="skills_name">
+                        <i class='bx bxl-javascript skills_icon' ></i>
+                        <span class="skills_name">JavaScript</span>
+                    </div>
+                    <div>
+                        <span class="skills_percentage">50%</span>
+                    </div>
+                    <div class="skills_bar skills_js"></div>
+                </div>
+
+                <div class="skills_data">
+                    <div class="skills_name">
+                        <i class='bx bxl-php skills_icon' ></i>
+                        <span class="skills_name">PHP</span>
+                    </div>
+                    <div>
+                        <span class="skills_percentage">70%</span>
+                    </div>
+                    <div class="skills_bar skills_php"></div>
+                </div>
+                <div class="skills_data">
+                    <div class="skills_name">
+                        <iconify-icon class='bx bxl-mysql skills_icon' icon="cib:mysql"></iconify-icon>
+                        <span class="skills_name">SQL</span>
+                    </div>
+                    <div>
+                        <span class="skills_percentage">90%</span>
+                    </div>
+                    <div class="skills_bar skills_sql"></div>
+                </div>
+
+            </div>
+            <img src="{{ asset('assets/img/portfolio/Work.jpg')}}" alt="" class="skills_img">
+        </div>
+    </section>
+    <!--WORK-->
+    <section class="work section" id="work">
+        <h2 class="section-title">Work</h2>
+        <div class="work_container bd-grid">
+            <div class="work_img">
+                <img src="{{ asset('assets/img/portfolio/work1.jpg')}}" alt="">
+            </div>
+
+            <div class="work_img">
+                <img src="{{ asset('assets/img/portfolio/work2.jpeg')}}" alt="">
+            </div>
+
+            <div class="work_img">
+                <img src="{{ asset('assets/img/portfolio/work3.jpg')}}" alt="">
+            </div>
+
+            <div class="work_img">
+                <img src="{{ asset('assets/img/portfolio/work4.jpg')}}" alt="">
+            </div>
+
+            <div class="work_img">
+                <img src="{{ asset('assets/img/portfolio/work5.jpg')}}" alt="">
+            </div>
+
+            <div class="work_img">
+                <img src="{{ asset('assets/img/portfolio/work6.jpg')}}" alt="">
+            </div>
+        </div>
+    </section>
+    <!--CONTACT-->
+    <section class="contact section" id="contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact_container bd-grid">
+            <form action="" class="contact_form">
+                <input type="text" placeholder="Name" class="contact_input">
+                <input type="mail" placeholder="Email" class="contact_input">
+                <textarea name="" id="" cols="0" rows="10" class="contact_input"></textarea>
+                <input type="button" value="Envoyer" class="contact_button button">
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <p class="footer_title">Ali</p>
+
+    <div class="footer_social">
+        <a href="#" class="footer_icon"><i class='bx bxl-facebook' ></i></a>
+        <a href="#" class="footer_icon"><i class='bx bxl-instagram' ></i></a>
+        <a href="#" class="footer_icon"><i class='bx bxl-snapchat' ></i></a>
+    </div>
+    <p>&#169; 2021 Coyright all right reserved.</p>
+</footer>
+
+
+
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
+<script src="{{ asset('assets/js/portfolio.js')}}"></script>
+{% endblock %}
