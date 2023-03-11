@@ -1,18 +1,109 @@
 .click-icone {
-    margin: 10px;
+  margin: 10px;
 }
 .click-icone:hover {
-    cursor: default;
-    background-color: rgba(255, 255, 255, 0.289);
-    outline: 1px solid rgba(255, 255, 255, 0.481);
+  cursor: default;
+  background-color: rgba(255, 255, 255, 0.289);
+  outline: 1px solid rgba(255, 255, 255, 0.481);
 }
 .window {
-    display: none;
-    position: absolute;
-    top: 20%;
-    left: 30%;
-    width: 50%;
-    height: 60%;
-    background-color: black;
-    border: rgba(24, 24, 24, 0.511);
+  display: none;
+  position: absolute;
+  flex-direction: column;
+  top: 20%;
+  left: 30%;
+  width: 50%;
+  height: 60%;
+  padding: 0;
+  border: 1px solid gray;
+  background-color: black;
+  border: rgba(24, 24, 24, 0.511);
+  animation: fadein 0.3s;
+  -moz-animation: fadein 0.3s; /* Firefox */
+  -webkit-animation: fadein 0.3s; /* Safari et Chrome */
+  -o-animation: fadein 0.3s; /* Opera */
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  /* sur Firefox */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  /* sur Safari et Chrome */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  /* sur Opera */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.barre-window {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(245, 241, 241);
+}
+.barre-window div p {
+  color: black;
+  margin: 6px;
+}
+.barre-window div {
+  display: flex;
+}
+.console-icone {
+  background-color: black;
+  color: white !important;
+  font-size: 0.8rem !important;
+  margin: 6px;
+  padding: 1px;
+  border: 1px solid gray;
+  border-top: 3px solid rgba(128, 128, 128, 0.726);
+  height: 26px;
+}
+.barre-window div a {
+  width: 45px;
+  height: 40px;
+}
+.barre-window div a:hover {
+  background-color: rgba(128, 128, 128, 0.329);
+}
+.close {
+  margin: 0 !important;
+  font-size: 1.6rem !important;
+  rotate: 45deg;
+}
+.tiret {
+  margin: 0 !important;
+  font-size: 1.6rem !important;
+}
+#background {
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
 }

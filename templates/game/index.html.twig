@@ -2,51 +2,61 @@
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('assets/css/toggleSwitch.css')}}">
 	<link rel="stylesheet" href="{{ asset('assets/css/windowGame.css')}}">
-            {{ encore_entry_link_tags('app') }}
+	{{ encore_entry_link_tags('app') }}
 {% endblock stylesheets %}
 {% block body %}
-{# <ul class="cover">
-            <li class="cover-game"></li>
-</ul> #}
-<div class="container-fluid block-page cover-game">
-	<div class="row center-card">
-		<h1 class="text-neon-blue text-center mt-5 mb-1">Liste de jeux</h1>
-		{% for game in games %}
-		<a class="col-lg-1 d-flex flex-column justify-content-center align-items-center col-md-4 col-sm-12 p-2 click-icone" href="">
-			<img class="icon-game" src="{{ asset('assets/img/icone/'~game.0.gameName~'.svg')}}">
-			<p class="text-neon-pink">{{game.0.gameName}}</p>
-			<div class="window">
-				{% if game.0.numberOfPlayer < 100 %}
-					<p class="text-light">nombre de joueur max :
-						{{game.0.numberOfPlayer}}</p>
-				{% else %}
-					<p class="text-light">nombre de joueur libre</p>
-				<p class="text-light">Type :
-					{{game.0.category}}</p>
-				{% endif %}
-				<form class="form-game" method="post">
-					<input type="hidden" name="gameId" value="{{game.0.id}}">
-					{% if game.username == null %}
-						<button class="fond-neon-non-possede" type="submit">Non-posséder</button>
+	<div class="container-fluid block-page cover-game">
+		<div class="row center-card">
+			<div id="background"></div>
+			<h1 class="text-neon-blue text-center mt-5 mb-1">Liste de jeux</h1>
+			{% for game in games %}
+				<a class="col-lg-1 d-flex flex-column justify-content-center align-items-center col-md-4 col-sm-12 p-2 click-icone" href="">
+					<img class="icon-game" src="{{ asset('assets/img/icone/'~game.0.gameName~'.svg')}}">
+					<p class="text-neon-pink">{{game.0.gameName}}</p>
+				</a>
+				<div class="window">
+					<div class="barre-window">
+						<div>
+							<p class="console-icone">C:\ _</p>
+							<p>C:\Program Files (x86)\{{ game.0.gameName}}.exe</p>
+						</div>
+						<div>
+							<a href="">
+								<p class="tiret">-</p>
+							</a>
+							<a href="">
+								<p class="close">+</p>
+							</a>
+						</div>
+					</div>
+					{% if game.0.numberOfPlayer < 100 %}
+						<p class="text-light">nombre de joueur max :
+							{{game.0.numberOfPlayer}}</p>
 					{% else %}
-						<button class="fond-neon-possede" type="submit">Posséder</button>
+						<p class="text-light">nombre de joueur libre</p>
+						<p class="text-light">Type :
+							{{game.0.category}}</p>
 					{% endif %}
-					{% if game.username != null %}
-						<label class="switch">
-							{% if game.showGame == false %}
-								<input class="eventCheckbox" type="checkbox">
-							{% else %}
-								<input class="eventCheckbox" type="checkbox" checked>
-							{% endif %}
-							<span class="slider round"></span>
-						</label>
-
-					{% endif %}
-				</form>
-			</div>
-
-		</a>
-		{% endfor %}
+					<form class="form-game" method="post">
+						<input type="hidden" name="gameId" value="{{game.0.id}}">
+						{% if game.username == null %}
+							<button class="fond-neon-non-possede" type="submit">Posséder</button>
+						{% else %}
+							<button class="fond-neon-possede" type="submit">Non-posséder</button>
+						{% endif %}
+						{% if game.username != null %}
+							<label class="switch">
+								{% if game.showGame == false %}
+									<input class="eventCheckbox" type="checkbox">
+								{% else %}
+									<input class="eventCheckbox" type="checkbox" checked>
+								{% endif %}
+								<span class="slider round"></span>
+							</label>
+						{% endif %}
+					</form>
+				</div>
+			{% endfor %}
 		</div>
 		<div class="space-10"></div>
 		<script src="{{ asset('assets/js/gameWindow.js')}}"></script>
@@ -56,5 +66,5 @@
 var urlDelete = "{{ path('app_delete_gameUser')|escape('js') }}";
 var urlUpdate = "{{ path('app_modify_gameUser') }}";
 		</script>
-</div>		
-	{% endblock %}
+	</div>
+{% endblock %}
