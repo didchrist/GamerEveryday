@@ -1,2 +1,267 @@
-<h1>Portfolio Christopher</h1><br>
-Tant qu'il y a des frites à la cantine, je suis votre homme.
+{% block stylesheets %}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128100823-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-128100823-1');
+        </script>
+        <meta charset="utf-8" />
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet">
+        <!-- Fonts Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <!-- Bootstrap CDN -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <!-- Main stylsheet -->
+        <link href="{{ asset('assets/css/portfolio_c/style.css')}}" rel="stylesheet">
+{% endblock %}
+{% block title %}Christopher Pelette - Portfolio - Concepteur développeur d'application{% endblock %}
+
+{% block body %}
+
+
+
+    <body class="container-fluid" data-spy="scroll" data-target="#main-navbar">
+        <header>
+            <nav id="main-navbar" class="row navbar fixed-top navbar-expand-lg navbar-expand-md">
+                <div class="navbar-brand">
+                    <a id="navbar-logo" href="#top">
+                        <span class="logo"><img id="logo-img" src="" alt=""></span>
+                        <span class="text d-none">Christopher Pelette</span>
+                    </a>
+                </div>
+                <button id="navbar_toggler" type="button" aria-controls="navbar_container" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="text-right" id="navbar_container">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link red-link" href="#about" data-target="about">À Propos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link red-link" href="#skills" data-target="skills">Compétences</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link red-link" href="#experiences" data-target="experiences">Formations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link red-link" href="#portfolio" data-target="portfolio">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link red-link" href="#contact" data-target="contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <section id="introduction" class="row">
+            <div class="col-md-12 text-center">
+                <div id="light-background">
+                    <h1 id="name-title">Christopher Pelette</h1>
+                    <hr class="separator red-separator">
+                    <p id="post-title">Concepteur développeur d'application</p>
+                </div>
+            </div>
+        </section>
+        <div id="about" class="scroll-adjust"></div>
+        <section id="about-section" class="row">
+            <div class="col-md-12 text-center">
+                <div class="light-ribbon ribbon-left"></div><h2 class="section-title">Présentation</h2><div class="light-ribbon ribbon-right"></div>
+            </div>
+            <div id="about-image-div" class="col-md-3 d-flex align-items-center justify-content-center">
+                <img id="about-image" class="img-frame" src="" alt="">Ta tête !!!
+            </div>
+            <div id="about-text" class="col-md-9 text-center">
+                <p>Après plusieurs années d'études,formations et quelques expériences professionnelles dans les réseaux informatiques, j'ai décidé de me diriger vers un domaine pour lequel je me suis découvert une passion, la programmation et plus particulièrement le <strong>Web</strong>.<br /> J'ai suivi une formation à l'<strong>AFPA</strong>, centre de formation en France, qui m'a permis d'apprendre les différents languages du web et leur utilisation à travers différents cas pratiques.<a class="link dark-link fa-space-left" id="portfolio-link" href="#portfolio" data-target="portfolio">Consulter mes réalisations<span class="fas fa-long-arrow-alt-right fa-space-left"></span></a></p>
+            </div>
+        </section>
+        <div id="skills" class="scroll-adjust"></div>
+        <section id="skills-section" class="row">
+            <div class="col-md-12 text-center">
+                <div class="light-ribbon ribbon-left"></div><h2 class="section-title">Mes Compétences</h2><div class="light-ribbon ribbon-right"></div>
+            </div>
+            <div class="col-md-5">
+                <div id="skills-list">
+                    <h2 class="skills-list-title text-center">Outils et OS</h2>
+                    <ul class="rounded-list">
+                        <li>Maitrise des environnements <strong>Windows</strong> et <strong>Linux</strong></li>
+                        <li>Création de <strong>Media Queries</strong> et <strong>Bootstraps</strong> afin de gérer la responsivité des sites Web</li>
+                        <li>Utilisation de <strong>Photoshop</strong> afin d'intégrer des maquettes</li>
+                    </ul>
+                    <h2 class="skills-list-title text-center">Autres compétences</h2>
+                    <ul class="rounded-list">
+                        <li>Mise en ligne et création des environnements en utilisant les protocoles <strong>FTP</strong></li>
+                        <li>Présentation orale et démonstration de projets terminés devant un responsable/chef d'équipe</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="skills-charts" class="col-md-7">
+                <div class="skills-chart">
+                    <h2 class="skills-list-title text-center">Langages Web et CMS</h2>
+                    <p class="font-weight-bold">HTML/CSS</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                    </div>
+                    <p class="font-weight-bold">Javascript</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                    </div>
+                    <p class="font-weight-bold">PHP</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
+                    </div>
+                    <p class="font-weight-bold">Wordpress</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
+                    </div>
+                    <p class="font-weight-bold">SQL</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                    </div>
+                </div>
+                <div class="skills-chart">
+                    <h2 class="skills-list-title text-center">Frameworks et Librairies</h2>
+                    <p class="font-weight-bold">jQuery</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+                    </div>
+                    <p class="font-weight-bold">Bootstrap</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div id="experiences" class="scroll-adjust"></div>
+        <section id="experiences-section" class="row">
+            <div class="col-md-12 text-center">
+                <div class="dark-ribbon ribbon-left"></div><h2 class="section-title">Mes Formations</h2><div class="dark-ribbon ribbon-right"></div>
+            </div>
+            <ul class="timeline">
+                <li>
+                    <div class="tl-circ tl-circ-current"></div>
+                    <div class="timeline-panel">
+                        <p class="font-weight-bold"><span class="fas fa-user-graduate fa-space-right"></span><a class="link black-link" href="https://www.afpa.fr/formation-qualifiante/developpeur-logiciel">Formation Développeur Web Web Mobile</a> - <a class="link black-link" href="https://www.afpa.fr/centre/centre-d-angouleme">AFPA - Centre d'Angoulême</a></p>
+                        <p><span class="fas fa-map-marker-alt fa-space-right"></span>Mornac</p>
+                        <p><span class="far fa-calendar-alt fa-space-right"></span>2021-2022</p>
+                        <p>Approfondissement et mise à niveau des compétences à travers de projets pratiques et grâce et des cours mis à disposition des principaux langages du Web (HTML, CSS, SQL, Javascript et PHP).</p>
+                    </div>
+                </li>
+                <li id="moving-timeline" class="timeline-inverted">
+                    <div class="tl-circ"></div>
+                    <div class="timeline-panel">
+                        <p class="font-weight-bold"><span class="fas fa-user-graduate fa-space-right"></span><a class="link black-link" href="http://etab.ac-poitiers.fr/lyc-venise-verte-niort/spip.php?rubrique26">BTS IG(nouvellement SIO)</a> - <a class="link black-link" href="http://etab.ac-poitiers.fr/lyc-venise-verte-niort/">La Venise Verte</a></p>
+                        <p><span class="fas fa-map-marker-alt fa-space-right"></span>Niort, France</p>
+                        <p><span class="far fa-calendar-alt fa-space-right"></span>2010-2012</p>
+                        <p>Brevet de technicien supérieur informatique de gestion. Approfondissement du language de programmations logiciel/web</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="tl-circ"></div>
+                    <div class="timeline-panel">
+                        <p class="font-weight-bold"><span class="fas fa-user-graduate fa-space-right"></span><a class="link black-link" href="https://www.fenelon-notredame.com/formations/post-bac/">BTS IG(nouvellement SIO)</a> - <a class="link black-link" href="https://www.fenelon-notredame.com/">Lycée Fenelon Notre Dame</a></p>
+                        <p><span class="fas fa-map-marker-alt fa-space-right"></span>La Rochelle, France</p>
+                        <p><span class="far fa-calendar-alt fa-space-right"></span>2008-2009</p>
+                        <p>Découverte de l'algorithmique et pratique des langages de programmations (C,C++,VB.Net,VBA,JAVA). Spécialité réseaux informatiques.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <div id="portfolio" class="scroll-adjust"></div>
+        <section id="portfolio-section" class="row">
+            <div class="col-md-12 text-center">
+                <div class="light-ribbon ribbon-left"></div><h2 class="section-title">Mes Réalisations</h2><div class="light-ribbon ribbon-right"></div>
+            </div>
+            <div class="row" id="project-gallery">
+                <div class="col-md-6 thumbnail">
+                    <div class="thumbnail-frame">
+                        <img class="thumbnail-img"  src="images/webagency-thumbnail.png" alt="Impression d'écran du projet WebAgency">
+                        <div class="project-description">
+                            <p class="text-center font-weight-bold project-description-title">WebAgency</p>
+                            <p class="text-center project-description-text">Premier projet sur la formation OpenClassrooms, l'objectif est l'apprentissage et la mise en oeuvre des langages HTML et CSS tout en respectant un cahier des charges</p>
+                            <p class="category-separator text-center">Technologies</p>
+                            <p><span class="tag">HTML</span> <span class="tag">CSS</span></p>
+                            <p class="category-separator text-center">Liens</p>
+                            <p><a class="visit-button" href="https://webagency.loiscuby.fr"><span class="fas fa-globe-americas fa-space-right"></span>Accéder au site</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 thumbnail">
+                    <div class="thumbnail-frame">
+                        <img class="thumbnail-img"  src="images/velov-thumbnail.png" alt="Impression d'écran du projet Velo'v">
+                        <div class="project-description">
+                            <p class="text-center font-weight-bold project-description-title">Velo'v</p>
+                            <p class="text-center project-description-text">Troisième projet sur la formation OpenClassrooms, l'objectif est d'apprendre le Javascript en créant un site permettant de réserver des vélos. Utilisation de l'API JCDecaux et Google Maps</p>
+                            <p class="category-separator text-center">Technologies</p>
+                            <p><span class="tag">HTML</span> <span class="tag">CSS</span> <span class="tag">Javascript</span> <span class="tag">jQuery</span></p>
+                            <p class="category-separator text-center">Liens</p>
+                            <p><a class="visit-button" href="https://velov.loiscuby.fr"><span class="fas fa-globe-americas fa-space-right"></span>Accéder au site</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 thumbnail">
+                    <div class="thumbnail-frame">
+                        <img class="thumbnail-img"  src="images/jeanforteroche-thumbnail.png" alt="Impression d'écran du projet Jean Forteroche">
+                        <div class="project-description">
+                            <p class="text-center font-weight-bold project-description-title">Jean Forteroche</p>
+                            <p class="text-center project-description-text">Quatrième projet sur la formation OpenClassrooms, l'objectif est d'apprendre le PHP sans utiliser de framework et en appliquant la logique CRUD en créant le blog d'un écrivain.</p>
+                            <p class="category-separator text-center">Technologies</p>
+                            <p><span class="tag">HTML</span> <span class="tag">CSS</span> <span class="tag">PHP</span> <span class="tag">Bootstrap</span></p>
+                            <p class="category-separator text-center">Liens</p>
+                            <p>
+                                <span><a class="visit-button" href="https://jeanforteroche.loiscuby.fr"><span class="fas fa-globe-americas fa-space-right"></span>Accéder au site</a></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 thumbnail">
+                    <div class="thumbnail-frame">
+                        <img class="thumbnail-img"  src="images/nikoniko-thumbnail.png" alt="Impression d'écran du projet Niko Niko">
+                        <div id="nikoniko" class="project-description">
+                            <p class="text-center font-weight-bold project-description-title">Niko Niko</p>
+                            <p class="text-center project-description-text">Dernier projet sur la formation OpenClassrooms, l'objectif est de valider toutes les compétences apprises, j'ai choisi de créer un site qui met en oeuvre la méthode agile Niko Niko.</p>
+                            <p class="category-separator mg-b-8 text-center">Technologies</p>
+                            <p class="tags-list"><span class="tag">HTML</span> <span class="tag">CSS</span> <span class="tag">PHP</span> <span class="tag">Symfony</span> <span class="tag">Javascript</span> <span class="tag">jQuery</span> <span class="tag">Bootstrap</span></p>
+                            <p class="category-separator text-center">Liens</p>
+                            <p>
+                                <span><a class="visit-button" href="https://nikoniko.loiscuby.fr"><span class="fas fa-globe-americas fa-space-right"></span>Accéder au site</a></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="resume-download" class="col-md-12 text-center">
+                <p>Vous pouvez également télécharger mon CV dans un format plus classique. Pour cela cliquez sur l'icône ci-dessous.</p>
+                <a href="downloads/cv.pdf"><img id="pdf-logo" src="images/pdf.svg" alt="Logo PDF"></a>
+            </div>
+        </section>
+        <div id="contact" class="scroll-adjust"></div>
+        <footer id="contact-section" class="row">
+            <div id="contact-title" class="col-md-12 text-center">
+                <div class="light-ribbon ribbon-left"></div><h2 class="section-title">/!\</h2><div class="light-ribbon ribbon-right"></div>
+            </div>
+            <div id="contact-form" class="col-md-6 text-center">
+                <p></p>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <p class="text-center">Vous pouvez également me retrouver sur les sites suivants !</p>
+                    <p class="text-center">
+                        <a class="footer-icon" href="https://www.linkedin.com/" target="_blank" rel="noopener"><span class="fab fa-linkedin"></span></a>
+                        <a class="footer-icon" href="https://github.com/" target="_blank" rel="noopener"><span class="fab fa-github"></span></a>
+                        <a class="footer-icon" href="https://codepen.io/" target="_blank" rel="noopener"><span class="fab fa-codepen"></span></a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <!-- Bootstrap Javascript CDN -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <!-- Main Javascript File -->
+        <script src="js/script.js"></script>
+    </body>
+</html>
+{% endblock %}
